@@ -24,6 +24,10 @@
             .state('uiBootstrapDateTimeForm', {
                 url: '/uiBootstrapDateTimeForm',
                 templateUrl: 'App/Views/uiBootstrapDateTimeForm/uiBootstrapDateTimeForm.html'
+            })
+            .state('uibTooltip', {
+                url: '/uibTooltip',
+                templateUrl: 'App/Views/uibTooltip/uibTooltip.html'
             });
 
     };

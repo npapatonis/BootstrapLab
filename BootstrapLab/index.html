@@ -7,11 +7,12 @@
     <script src="Scripts/angular.js"></script>
     <script src="Scripts/angular-ui-router.js"></script>
     <script src="Scripts/angular-animate.js"></script>
-    <script src="Scripts/angular-ui/ui-bootstrap.js"></script>
+    <script src="Scripts/angular-ui/ui-bootstrap-tpls.js"></script>
     <script src="Scripts/angular-strap.js"></script>
     <script src="Scripts/angular-strap.tpl.js"></script>
     <script src="App/app.js"></script>
     <script src="App/Views/validationLabOne/validationLabOne.js"></script>
+    <script src="App/Views/uibTooltip/uibTooltip.js"></script>
 
     <style>
         .navbar {
@@ -47,10 +48,10 @@
             </li>
             <li class="dropdown" uib-dropdown>
                 <a role="button" class="dropdown-toggle" uib-dropdown-toggle>
-                    Other Input<b class="caret"></b>
+                    Other Directives<b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a ui-sref="#">Item</a></li>
+                    <li><a ui-sref="uibTooltip">UIB Tooltip</a></li>
                 </ul>
             </li>
         </ul>

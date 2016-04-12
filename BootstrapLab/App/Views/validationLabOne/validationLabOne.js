@@ -7,6 +7,8 @@
     function validationLabOneController($scope) {
         var vm = this;
 
+        $scope.inputModel = 'Nick';
+
         $scope.master = {};
 
         $scope.update = function (user) {

@@ -1,11 +1,14 @@
 ﻿<div ng-controller="validationLabOneController">
     <form name="form" class="css-form" novalidate>
-        Name:
-        <input type="text" ng-model="user.name" name="uName" required="" />
+        <span uib-tooltip="Tell us your name" tooltip-is-open="(form.$submitted || form.uName.$touched) && form.uName.$error.required" tooltip-placement="top">Name:</span>
+        <input type="text"
+               ng-model="user.name"
+               name="uName"
+               required />
         <br />
-        <div ng-show="form.$submitted || form.uName.$touched">
+        <!--<div ng-show="form.$submitted || form.uName.$touched">
             <div ng-show="form.uName.$error.required">Tell us your name.</div>
-        </div>
+        </div>-->
 
         E-mail:
         <input type="email" ng-model="user.email" name="uEmail" required="" />
