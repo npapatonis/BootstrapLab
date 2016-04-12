@@ -1,35 +1,68 @@
 ﻿<div ng-controller="validationLabOneController">
     <form name="form" class="css-form" novalidate>
-        <span uib-tooltip="Tell us your name" tooltip-is-open="(form.$submitted || form.uName.$touched) && form.uName.$error.required" tooltip-placement="top">Name:</span>
+        <label for="uName" class="control-label">Name:</label>
         <input type="text"
-               ng-model="user.name"
                name="uName"
+               class="form-control"
+               ng-model="user.name"
+               ng-model-options="{ updateOn: 'blur' }"
+               uib-tooltip={{userNameValidationMessage(form)}}
+               tooltip-is-open="userNameHasValidationError(form)"
+               tooltip-placement="top-right"
+               tooltip-trigger="none"
                required />
         <br />
         <!--<div ng-show="form.$submitted || form.uName.$touched">
             <div ng-show="form.uName.$error.required">Tell us your name.</div>
         </div>-->
-
-        E-mail:
-        <input type="email" ng-model="user.email" name="uEmail" required="" />
+        <label for="uEmail" class="control-label">E-mail:</label>
+        <input type="email"
+               name="uEmail"
+               class="form-control"
+               ng-model="user.email"
+               ng-model-options="{ updateOn: 'blur' }"
+               uib-tooltip={{emailValidationMessage(form)}}
+               tooltip-is-open="emailHasValidationError(form)"
+               tooltip-placement="top-right"
+               tooltip-trigger="none"
+               required />
         <br />
-        <div ng-show="form.$submitted || form.uEmail.$touched">
+        <!--<div ng-show="form.$submitted || form.uEmail.$touched">
             <span ng-show="form.uEmail.$error.required">Tell us your email.</span>
             <span ng-show="form.uEmail.$error.email">This is not a valid email.</span>
-        </div>
-
+        </div>-->
         Gender:
-        <input type="radio" ng-model="user.gender" value="male" />male
-        <input type="radio" ng-model="user.gender" value="female" />female
-        <br />
-        <input type="checkbox" ng-model="user.agree" name="userAgree" required="" />
+        <input type="radio" class="form-inline" ng-model="user.gender" value="male" />male
+        <input type="radio" class="form-inline" ng-model="user.gender" value="female" />female
 
-        I agree:
-        <input ng-show="user.agree" type="text" ng-model="user.agreeSign" required="" />
         <br />
-        <div ng-show="form.$submitted || form.userAgree.$touched">
+
+        <input type="checkbox"
+               name="userAgree"
+               class="form-inline"
+               ng-model="user.agree"
+               uib-tooltip={{agreementValidationMessage(form)}}
+               tooltip-is-open="agreementHasValidationError(form, user)"
+               tooltip-placement="right"
+               tooltip-trigger="none"
+               required />I agree:
+
+        <label for="uEmail" class="control-label">Signed:</label>
+        <input type="text"
+               name="agreeSign"
+               class="form-control"
+               ng-model="user.agreeSign"
+               ng-show="user.agree"
+               ng-model-options="{ updateOn: 'blur' }"
+               uib-tooltip={{agreeSignValidationMessage(form)}}
+               tooltip-is-open="agreementHasValidationError(form, user)"
+               tooltip-placement="top-right"
+               tooltip-trigger="none"
+               required />
+        <br />
+        <!--<div ng-show="form.$submitted || form.userAgree.$touched">
             <div ng-show="!user.agree || !user.agreeSign">Please agree and sign.</div>
-        </div>
+        </div>-->
 
         <input type="button" ng-click="reset(form)" value="Reset" />
         <input type="submit" ng-click="update(user)" value="Save" />
