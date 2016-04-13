@@ -1,0 +1,95 @@
+﻿<div class="form-group" ng-controller="validationLabTwoController">
+    <form name="form" class="css-form" novalidate>
+        <h2>Validation Lab Two</h2>
+
+        <div class="form-group row">
+            <label for="uName" class="form-control-label col-sm-2">Name</label>
+            <div class="col-sm-10">
+                <input type="text"
+                       name="uName"
+                       class="form-control"
+                       ng-model="user.name"
+                       ng-model-options="{ updateOn: 'blur' }"
+                       uib-tooltip={{userNameValidationMessage(form)}}
+                       tooltip-is-open="userNameHasValidationError(form)"
+                       tooltip-placement="top-right"
+                       tooltip-trigger="none"
+                       required />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="uEmail" class="form-control-label col-sm-2">Email</label>
+            <div class="col-sm-10">
+                <input type="email"
+                       name="uEmail"
+                       class="form-control"
+                       ng-model="user.email"
+                       ng-model-options="{ updateOn: 'blur' }"
+                       uib-tooltip={{emailValidationMessage(form)}}
+                       tooltip-is-open="emailHasValidationError(form)"
+                       tooltip-placement="top-right"
+                       tooltip-trigger="none"
+                       required />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2">Gender</label>
+            <div class="col-sm-10">
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="gender" ng-model="user.gender" value="male" />
+                        Male
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="gender" ng-model="user.gender" value="female" />
+                        Female
+                    </label>
+                </div>
+            </div>
+        </div>
+        
+
+        <div class="checkbox">
+            <label>
+                <input type="checkbox"
+                       name="userAgree"
+                       class="form-inline"
+                       ng-model="user.agree"
+                       uib-tooltip={{userAgreeValidationMessage(form)}}
+                       tooltip-is-open="userAgreeHasValidationError(form, user)"
+                       tooltip-placement="right"
+                       tooltip-trigger="none"
+                       required />
+                I agree:
+            </label>
+        </div>
+
+        <div ng-show="user.agree">
+            <label for="uEmail" class="control-label">Signed:</label>
+            <input type="text"
+                   name="agreeSign"
+                   class="form-control"
+                   ng-model="user.agreeSign"
+                   ng-model-options="{ updateOn: 'blur' }"
+                   uib-tooltip={{agreeSignValidationMessage(form)}}
+                   tooltip-is-open="agreeSignHasValidationError(form, user)"
+                   tooltip-placement="top-right"
+                   tooltip-trigger="none"
+                   required />
+        </div>
+
+        <br />
+
+        <input type="button" class="btn btn-secondary" ng-click="reset(form)" value="Reset" />
+        <input type="submit" class="btn btn-primary" ng-click="update(user)" value="Save" />
+    </form>
+
+    <br />
+
+    <pre>user = {{user | json}}</pre>
+    <pre>master = {{master | json}}</pre>
+</div>

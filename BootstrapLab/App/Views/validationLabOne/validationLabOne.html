@@ -1,6 +1,6 @@
-﻿<div ng-controller="validationLabOneController">
+﻿<div class="form-group" ng-controller="validationLabOneController">
     <form name="form" class="css-form" novalidate>
-        <label for="uName" class="control-label">Name:</label>
+        <label for="uName">Name:</label>
         <input type="text"
                name="uName"
                class="form-control"
@@ -14,7 +14,7 @@
 
         <br />
 
-        <label for="uEmail" class="control-label">E-mail:</label>
+        <label for="uEmail">E-mail:</label>
         <input type="email"
                name="uEmail"
                class="form-control"
@@ -73,9 +73,12 @@
 
         <br />
 
-        <input type="button" ng-click="reset(form)" value="Reset" />
-        <input type="submit" ng-click="update(user)" value="Save" />
+        <input type="button" class="btn btn-secondary" ng-click="reset(form)" value="Reset" />
+        <input type="submit" class="btn btn-primary" ng-click="update(user)" value="Save" />
     </form>
+
+    <br />
+
     <pre>user = {{user | json}}</pre>
     <pre>master = {{master | json}}</pre>
 </div>
