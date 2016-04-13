@@ -25,41 +25,53 @@
                tooltip-placement="top-right"
                tooltip-trigger="none"
                required />
-        
-        <br />
-
-        Gender:
-        <input type="radio" class="form-inline" ng-model="user.gender" value="male" />male
-        <input type="radio" class="form-inline" ng-model="user.gender" value="female" />female
 
         <br />
 
-        <input type="checkbox"
-               name="userAgree"
-               class="form-inline"
-               ng-model="user.agree"
-               uib-tooltip={{agreementValidationMessage(form)}}
-               tooltip-is-open="agreementHasValidationError(form, user)"
-               tooltip-placement="right"
-               tooltip-trigger="none"
-               required />I agree:
+        <label>Gender:</label>
+        <div class="radio">
+            <label>
+                <input type="radio" ng-model="user.gender" value="male" />Male
+            </label>
+        </div>
+        <div class="radio">
+            <label>
+                <input type="radio" ng-model="user.gender" value="female" />female
+            </label>
+        </div>
 
-        <label for="uEmail" class="control-label">Signed:</label>
-        <input type="text"
-               name="agreeSign"
-               class="form-control"
-               ng-model="user.agreeSign"
-               ng-show="user.agree"
-               ng-model-options="{ updateOn: 'blur' }"
-               uib-tooltip={{agreeSignValidationMessage(form)}}
-               tooltip-is-open="agreementHasValidationError(form, user)"
-               tooltip-placement="top-right"
-               tooltip-trigger="none"
-               required />
         <br />
-        <!--<div ng-show="form.$submitted || form.userAgree.$touched">
-            <div ng-show="!user.agree || !user.agreeSign">Please agree and sign.</div>
-        </div>-->
+
+        <div class="checkbox">
+            <label>
+                <input type="checkbox"
+                       name="userAgree"
+                       class="form-inline"
+                       ng-model="user.agree"
+                       uib-tooltip={{userAgreeValidationMessage(form)}}
+                       tooltip-is-open="userAgreeHasValidationError(form, user)"
+                       tooltip-placement="right"
+                       tooltip-trigger="none"
+                       required />
+                I agree:
+            </label>
+        </div>
+
+        <div ng-show="user.agree">
+            <label for="uEmail" class="control-label">Signed:</label>
+            <input type="text"
+                   name="agreeSign"
+                   class="form-control"
+                   ng-model="user.agreeSign"
+                   ng-model-options="{ updateOn: 'blur' }"
+                   uib-tooltip={{agreeSignValidationMessage(form)}}
+                   tooltip-is-open="agreeSignHasValidationError(form, user)"
+                   tooltip-placement="top-right"
+                   tooltip-trigger="none"
+                   required />
+        </div>
+
+        <br />
 
         <input type="button" ng-click="reset(form)" value="Reset" />
         <input type="submit" ng-click="update(user)" value="Save" />

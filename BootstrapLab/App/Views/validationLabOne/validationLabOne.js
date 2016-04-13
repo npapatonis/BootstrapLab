@@ -57,15 +57,16 @@
             }
         }
 
-        $scope.agreementHasValidationError = function (form, user) {
+        $scope.userAgreeHasValidationError = function (form, user) {
             if (form) {
-                return (canValidate(form, form.userAgree) || canValidate(form, form.agreeSign)) &&
-                    (!user.agree || !user.agreeSign);
+                return form.$submitted && !user.agree;
+                //return (canValidate(form, form.userAgree) || canValidate(form, form.agreeSign)) &&
+                //    (!user.agree || !user.agreeSign);
             }
             return false;
         }
 
-        $scope.agreementValidationMessage = function (user) {
+        $scope.userAgreeValidationMessage = function (user) {
             if (user) {
                 if (!user.agree || !user.agreeSign) {
                     return 'Please agree and sign';
@@ -75,7 +76,8 @@
 
         $scope.agreeSignHasValidationError = function (form, user) {
             if (form) {
-                return canValidate(form, form.agreeSign) && (!user.agree || !user.agreeSign);
+                var control = form.agreeSign;
+                return canValidate(form, control) && user.agree && control.$error.required;
             }
             return false;
         }
