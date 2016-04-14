@@ -57,11 +57,24 @@
             }
         }
 
+        $scope.genderHasValidationError = function (form, user) {
+            if (form) {
+                return form.$submitted && !user.gender;
+            }
+            return false;
+        }
+
+        $scope.genderValidationMessage = function (user) {
+            if (user) {
+                if (!user.gender) {
+                    return 'Please specify gender';
+                }
+            }
+        }
+
         $scope.userAgreeHasValidationError = function (form, user) {
             if (form) {
                 return form.$submitted && !user.agree;
-                //return (canValidate(form, form.userAgree) || canValidate(form, form.agreeSign)) &&
-                //    (!user.agree || !user.agreeSign);
             }
             return false;
         }
@@ -85,7 +98,7 @@
         $scope.agreeSignValidationMessage = function (user) {
             if (user) {
                 if (!user.agree || !user.agreeSign) {
-                    return 'Please agree and sign';
+                    return 'Please sign';
                 }
             }
         }
