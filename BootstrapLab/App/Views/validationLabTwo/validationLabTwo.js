@@ -7,7 +7,6 @@
     function validationLabTwoController($scope) {
         var vm = this;
 
-        //$scope.master = { time: new Date(1970, 0, 1, 0, 0, 0) };
         $scope.master = {};
 
         $scope.update = function (user) {
@@ -61,7 +60,7 @@
         $scope.timeHasValidationError = function (form) {
             if (form) {
                 var control = form.time;
-                return canValidate(form, control) && (control.$error.required || control.$error.time);
+                return canValidate(form, control) && (control.$error.required || control.$error.date);
             }
             return false;
         }
@@ -72,7 +71,7 @@
                 if (control.$error.required) {
                     return 'Time is required';
                 }
-                if (control.$error.time) {
+                if (control.$error.date) {
                     return 'This is not a valid time';
                 }
             }
