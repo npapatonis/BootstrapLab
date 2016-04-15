@@ -3,3 +3,6 @@
 ################################################################################
 
 /BootstrapLab/obj/Debug
+/BootstrapLab/bin
+/.vs/config
+/.vs/BootstrapLab/v14

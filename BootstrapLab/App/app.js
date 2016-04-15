@@ -21,6 +21,10 @@
                 url: '/validationLabTwo',
                 templateUrl: 'App/Views/validationLabTwo/validationLabTwo.html'
             })
+            .state('validationLabThree', {
+                url: '/validationLabThree',
+                templateUrl: 'App/Views/validationLabThree/validationLabThree.html'
+            })
             .state('angularStrapDateTimeForm', {
                 url: '/angularStrapDateTimeForm',
                 templateUrl: 'App/Views/angularStrapDateTimeForm/angularStrapDateTimeForm.html'
