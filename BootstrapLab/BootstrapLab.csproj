@@ -66,6 +66,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App\Directives\focus.js" />
     <Content Include="App\Views\uibTooltip\uibTooltip.html" />
     <Content Include="App\Views\uibTooltip\uibTooltip.js" />
     <Content Include="App\Views\validationLabThree\validationLabThree.html" />

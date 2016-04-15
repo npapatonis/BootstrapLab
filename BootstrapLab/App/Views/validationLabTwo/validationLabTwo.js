@@ -7,6 +7,16 @@
     function validationLabTwoController($scope) {
         var vm = this;
 
+        $scope.timeHasFocus = false;
+        $scope.showTimepicker = false;
+        $scope.handleTickPickerButton = function () {
+            if (!$scope.showTimepicker) $scope.showTimepicker = true;
+            $scope.timeHasFocus = true;
+        }
+        $scope.handleTimeBlur = function () {
+            $scope.showTimepicker = false;
+        }
+
         $scope.master = {};
 
         $scope.update = function (user) {

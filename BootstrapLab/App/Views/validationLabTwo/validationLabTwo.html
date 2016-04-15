@@ -47,6 +47,7 @@
                            class="form-control"
                            ng-model="user.time"
                            ng-model-options="{ updateOn: 'blur' }"
+                           ng-blur="handleTimeBlur()"
                            bs-timepicker
                            bs-show="showTimepicker"
                            data-time-format="HH:mm"
@@ -57,9 +58,14 @@
                            tooltip-is-open="timeHasValidationError(form)"
                            tooltip-placement="top-right"
                            tooltip-trigger="none"
+                           tks-focus="timeHasFocus"
                            required />
                     <span class="input-group-btn">
-                        <button type="button" class="btn btn-default" ng-click="showTimepicker = !showTimepicker; $window.document.getElementById('time').focus()"><i class="glyphicon glyphicon-time"></i></button>
+                        <button type="button"
+                                class="btn btn-default"
+                                ng-click="handleTickPickerButton()">
+                            <i class="glyphicon glyphicon-time"></i>
+                        </button>
                     </span>
                 </div>
             </div>
