@@ -57,6 +57,26 @@
             }
         }
 
+        $scope.timeHasValidationError = function (form) {
+            if (form) {
+                var control = form.time;
+                return canValidate(form, control) && (control.$error.required || control.$error.time);
+            }
+            return false;
+        }
+
+        $scope.timeValidationMessage = function (form) {
+            if (form) {
+                var control = form.time;
+                if (control.$error.required) {
+                    return 'Time is required';
+                }
+                if (control.$error.time) {
+                    return 'This is not a valid time';
+                }
+            }
+        }
+
         $scope.genderHasValidationError = function (form, user) {
             if (form) {
                 return form.$submitted && !user.gender;
