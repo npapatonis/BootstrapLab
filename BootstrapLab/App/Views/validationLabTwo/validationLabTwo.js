@@ -7,6 +7,7 @@
     function validationLabTwoController($scope) {
         var vm = this;
 
+        //$scope.master = { time: new Date(1970, 0, 1, 0, 0, 0) };
         $scope.master = {};
 
         $scope.update = function (user) {
