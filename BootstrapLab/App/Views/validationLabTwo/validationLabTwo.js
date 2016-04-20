@@ -42,7 +42,7 @@
         $scope.userNameValidationMessage = function (form) {
             if (form) {
                 if (form.uName.$error.required) {
-                    return 'Name is required';
+                    return 'Please enter your name';
                 }
             }
         }
@@ -59,10 +59,10 @@
             if (form) {
                 var control = form.uEmail;
                 if (control.$error.required) {
-                    return 'Email is required';
+                    return 'Please enter your email address';
                 }
                 if (control.$error.email) {
-                    return 'This is not a valid email';
+                    return 'Please enter a valid email address';
                 }
             }
         }
@@ -79,10 +79,10 @@
             if (form) {
                 var control = form.time;
                 if (control.$error.required) {
-                    return 'Time is required';
+                    return 'Please enter a time';
                 }
                 if (control.$error.date) {
-                    return 'This is not a valid time';
+                    return 'Please enter a 24 hour time in hh:mm form';
                 }
             }
         }

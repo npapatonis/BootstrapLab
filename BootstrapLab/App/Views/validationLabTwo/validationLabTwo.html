@@ -5,41 +5,48 @@
         <!-- User name -->
         <div class="form-group row">
             <label for="uName" class="form-control-label col-sm-2">Name</label>
-            <div class="col-sm-10">
+            <div class="col-sm-3">
                 <input type="text"
                        name="uName"
                        class="form-control"
                        ng-model="user.name"
                        ng-model-options="{ updateOn: 'blur' }"
-                       uib-tooltip={{userNameValidationMessage(form)}}
-                       tooltip-is-open="userNameHasValidationError(form)"
-                       tooltip-placement="top-right"
-                       tooltip-trigger="none"
                        required />
+            </div>
+            <div class="col-sm-6"
+                 ng-show="userNameHasValidationError(form)">
+                <div style="color: red">
+                    <i class="glyphicon glyphicon-alert"></i>
+                    {{userNameValidationMessage(form)}}
+                </div>
             </div>
         </div>
 
         <!-- Email -->
         <div class="form-group row">
             <label for="uEmail" class="form-control-label col-sm-2">Email</label>
-            <div class="col-sm-10">
+            <div class="col-sm-3">
                 <input type="email"
                        name="uEmail"
                        class="form-control"
                        ng-model="user.email"
                        ng-model-options="{ updateOn: 'blur' }"
-                       uib-tooltip={{emailValidationMessage(form)}}
-                       tooltip-is-open="emailHasValidationError(form)"
-                       tooltip-placement="top-right"
-                       tooltip-trigger="none"
                        required />
+            </div>
+            <div class="col-sm-6"
+                 ng-show="emailHasValidationError(form)">
+                <div style="color: red">
+                    <!--<i class="glyphicon glyphicon-exclamation-sign"></i>-->
+                    <span style="font-size: larger; padding-right: 5px;"><b>!</b></span>
+                    {{emailValidationMessage(form)}}
+                </div>
             </div>
         </div>
 
         <!-- Time -->
         <div class="form-group row">
             <label for="testTime" class="form-control-label col-sm-2">Time</label>
-            <div class="col-sm-10">
+            <div class="col-sm-3">
                 <div class="input-group">
                     <input type="text"
                            id="time"
@@ -54,10 +61,6 @@
                            data-minute-step="1"
                            data-trigger="manual"
                            data-autoclose="1"
-                           uib-tooltip={{timeValidationMessage(form)}}
-                           tooltip-is-open="timeHasValidationError(form)"
-                           tooltip-placement="top-right"
-                           tooltip-trigger="none"
                            tks-focus="timeHasFocus"
                            required />
                     <span class="input-group-btn">
@@ -69,17 +72,21 @@
                     </span>
                 </div>
             </div>
+            <div class="col-sm-6"
+                 ng-show="timeHasValidationError(form)">
+                <div style="color: red">
+                    <i class="glyphicon glyphicon-exclamation-sign"></i>
+                    {{timeValidationMessage(form)}}
+                </div>
+            </div>
         </div>
 
-        <!-- Gender
+        <!-- Gender -->
         <div class="form-group row">
             <label class="col-sm-2">Gender</label>
-            <div class="col-sm-10">
+            <div class="col-sm-3">
                 <div class="radio">
-                    <label uib-tooltip={{genderValidationMessage(user)}}
-                           tooltip-is-open="genderHasValidationError(form, user)"
-                           tooltip-placement="right"
-                           tooltip-trigger="none">
+                    <label>
                         <input type="radio" name="gender" ng-model="user.gender" value="male" />
                         Male
                     </label>
@@ -91,11 +98,18 @@
                     </label>
                 </div>
             </div>
+            <div class="col-sm-6"
+                 ng-show="genderHasValidationError(form, user)">
+                <div style="color: red">
+                    <i class="glyphicon glyphicon-exclamation-sign"></i>
+                    {{genderValidationMessage(user)}}
+                </div>
+            </div>
         </div>
 
         <!-- Agree checkbox -->
         <div class="form-group row">
-            <div class="col-sm-offset-2 col-sm-10">
+            <div class="col-sm-offset-2 col-sm-3">
                 <div class="checkbox">
                     <label uib-tooltip={{userAgreeValidationMessage(form)}}
                            tooltip-is-open="userAgreeHasValidationError(form, user)"
@@ -116,7 +130,7 @@
         <div ng-show="user.agree">
             <div class="form-group row">
                 <label for="uEmail" class="form-control-label col-sm-2">Signed:</label>
-                <div class="col-sm-10">
+                <div class="col-sm-3">
                     <input type="text"
                            name="agreeSign"
                            class="form-control"
