@@ -1,0 +1,202 @@
+﻿<div class="form-group" ng-controller="validationLabFourController">
+    <form name="form" class="css-form" novalidate>
+        <h2>Validation Lab Four</h2>
+
+        <!-- User name -->
+        <div class="form-group row">
+            <label for="uName" class="form-control-label col-sm-2">Name</label>
+            <div class="col-sm-3">
+                <input type="text"
+                       name="uName"
+                       class="form-control"
+                       ng-model="user.name"
+                       ng-model-options="{ updateOn: 'blur' }"
+                       required />
+            </div>
+            <div class="col-sm-6"
+                 ng-show="(form.$submitted || form.uName.$touched) && !form.uName.$valid">
+                <div style="color: red">
+                    <span style="font-size: larger; padding-right: 5px;"><b>!</b></span>
+                    <span ng-show='form.uName.$error.required'>Please enter your name</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Email -->
+        <div class="form-group row">
+            <label for="uEmail" class="form-control-label col-sm-2">Email</label>
+            <div class="col-sm-3">
+                <input type="email"
+                       name="uEmail"
+                       class="form-control"
+                       ng-model="user.email"
+                       ng-model-options="{ updateOn: 'blur' }"
+                       required />
+            </div>
+            <div class="col-sm-6"
+                 ng-show="(form.$submitted || form.uEmail.$touched) && !form.uEmail.$valid">
+                <div style="color: red">
+                    <span style="font-size: larger; padding-right: 5px;"><b>!</b></span>
+                    <span ng-show='form.uEmail.$error.required'>Please enter your email address</span>
+                    <span ng-show='form.uEmail.$error.email'>Please enter a valid email address</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Time -->
+        <div class="form-group row">
+            <label for="testTime" class="form-control-label col-sm-2">Time</label>
+            <div class="col-sm-3">
+                <div class="input-group">
+                    <input type="text"
+                           id="fromDate"
+                           name="fromDate"
+                           class="form-control"
+                           ng-model="daterange.from"
+                           ng-model-options="{ updateOn: 'blur' }"
+                           ng-blur="handleDateBlur()"
+                           bs-datepicker
+                           bs-show="showDatepicker"
+                           data-trigger="manual"
+                           data-autoclose="1"
+                           tks-focus="dateHasFocus"
+                           required>
+                    <span class="input-group-btn">
+                        <button type="button"
+                                class="btn btn-default"
+                                ng-click="handleDatePickerButton()">
+                            <i class="glyphicon glyphicon-calendar"></i>
+                        </button>
+                    </span>
+
+                    <input type="text"
+                           id="fromTime"
+                           name="fromTime"
+                           class="form-control"
+                           ng-model="daterange.from"
+                           ng-model-options="{ updateOn: 'blur' }"
+                           ng-blur="handleTimeBlur()"
+                           bs-timepicker
+                           bs-show="showTimepicker"
+                           data-time-format="HH:mm"
+                           data-minute-step="1"
+                           data-trigger="manual"
+                           data-autoclose="1"
+                           tks-focus="timeHasFocus"
+                           required />
+                    <span class="input-group-btn">
+                        <button type="button"
+                                class="btn btn-default"
+                                ng-click="handleTimePickerButton()">
+                            <i class="glyphicon glyphicon-time"></i>
+                        </button>
+                    </span>
+                </div>
+            </div>
+            <div class="col-sm-6"
+                 ng-show="(form.$submitted || form.fromTime.$touched) && !form.fromTime.$valid">
+                <div style="color: red">
+                    <span style="font-size: larger; padding-right: 5px;"><b>!</b></span>
+                    <span ng-show='form.fromTime.$error.required'>Please enter a time</span>
+                    <span ng-show='form.fromTime.$error.date'>Please enter a 24 hour time in hh:mm form</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gender -->
+        <div class="form-group row">
+            <label class="col-sm-2">Gender</label>
+            <div class="col-sm-3">
+                <div class="radio">
+                    <label>
+                        <input type="radio"
+                               name="gender"
+                               ng-model="user.gender"
+                               value="male"
+                               required />
+                        Male
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio"
+                               name="gender"
+                               ng-model="user.gender"
+                               value="female"
+                               required />
+                        Female
+                    </label>
+                </div>
+            </div>
+            <div class="col-sm-6"
+                 ng-show="(form.$submitted || form.gender.$touched) && !form.gender.$valid">
+                <div style="color: red">
+                    <span style="font-size: larger; padding-right: 5px;"><b>!</b></span>
+                    <span ng-show='form.gender.$error.required'>Please specify gender</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Agree checkbox -->
+        <div class="form-group row">
+            <div class="col-sm-offset-2 col-sm-3">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox"
+                               name="userAgree"
+                               class="form-inline"
+                               ng-model="user.agree"
+                               required />
+                        I agree:
+                    </label>
+                </div>
+            </div>
+            <div class="col-sm-6"
+                 ng-show="form.$submitted && !form.userAgree.$valid">
+                <div style="color: red">
+                    <span style="font-size: larger; padding-right: 5px;"><b>!</b></span>
+                    <span ng-show='form.userAgree.$error.required'>Please agree and sign</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Signature -->
+        <div ng-show="user.agree">
+            <div class="form-group row">
+                <label for="uEmail" class="form-control-label col-sm-2">Signed:</label>
+                <div class="col-sm-3">
+                    <input type="text"
+                           name="agreeSign"
+                           class="form-control"
+                           ng-model="user.agreeSign"
+                           ng-model-options="{ updateOn: 'blur' }"
+                           required />
+                </div>
+                <div class="col-sm-6"
+                     ng-show="(form.$submitted || form.agreeSign.$touched) && !form.agreeSign.$valid">
+                    <div style="color: red">
+                        <span style="font-size: larger; padding-right: 5px;"><b>!</b></span>
+                        <span ng-show='form.agreeSign.$error.required'>Please sign</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-offset-2 col-sm-10">
+                <input type="submit" class="btn btn-primary" ng-click="update(user)" value="Save" />
+                <input type="button" class="btn btn-secondary" ng-click="reset(form)" value="Reset" />
+            </div>
+        </div>
+    </form>
+
+    <br />
+
+    <pre>user = {{user | json}}</pre>
+    <pre>master = {{master | json}}</pre>
+
+    <!--<pre>time value = {{user.time | date: "HH:mm:ss"}}</pre>
+    <pre>form.time.$valid = {{form.time.$valid}}</pre>
+    <pre>form.time.$error = {{form.time.$error}}</pre>-->
+
+</div>
