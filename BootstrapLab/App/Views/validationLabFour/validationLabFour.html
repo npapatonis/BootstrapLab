@@ -122,58 +122,60 @@
         <div class="form-group row">
             <label for="testTime" class="form-control-label col-sm-2">To Date/Time</label>
             <div class="col-sm-3">
-                <div class="input-group" style="margin-bottom: 5px;">
-                    <!--
-                    updateOn: 'blur' required unmerged fix to bsDatapicker found here
-                    https://github.com/mgcrea/angular-strap/issues/1668
-                -->
-                    <input type="text"
-                           id="toDate"
-                           name="toDate"
-                           class="form-control"
-                           ng-model="daterange.toDate"
-                           ng-model-options="{ updateOn: 'blur' }"
-                           ng-blur="handleToDateBlur()"
-                           bs-datepicker
-                           bs-show="showToDatePicker"
-                           data-date-format="M-d-yyyy"
-                           data-trigger="manual"
-                           data-autoclose="1"
-                           tks-focus="toDateHasFocus"
-                           required>
-                    <span class="input-group-btn">
-                        <button type="button"
-                                class="btn btn-default"
-                                ng-click="handleToDatePickerButton()">
-                            <i class="glyphicon glyphicon-calendar"></i>
-                        </button>
+                <span>
+                    <span class="input-group">
+                        <!--
+                        updateOn: 'blur' required unmerged fix to bsDatapicker found here
+                        https://github.com/mgcrea/angular-strap/issues/1668
+                        -->
+                        <input type="text"
+                               id="toDate"
+                               name="toDate"
+                               class="form-control"
+                               ng-model="daterange.toDate"
+                               ng-model-options="{ updateOn: 'blur' }"
+                               ng-blur="handleToDateBlur()"
+                               bs-datepicker
+                               bs-show="showToDatePicker"
+                               data-date-format="M-d-yyyy hh:mm:ss"
+                               data-trigger="manual"
+                               data-autoclose="1"
+                               tks-focus="toDateHasFocus"
+                               required>
+                        <span class="input-group-btn">
+                            <button type="button"
+                                    class="btn btn-default"
+                                    ng-click="handleToDatePickerButton()">
+                                <i class="glyphicon glyphicon-calendar"></i>
+                            </button>
+                        </span>
                     </span>
-
-                </div>
-                <div class="input-group">
-                    <input type="text"
-                           id="toTime"
-                           name="toTime"
-                           class="form-control"
-                           ng-model="daterange.toTime"
-                           ng-model-options="{ updateOn: 'blur' }"
-                           ng-blur="handleToTimeBlur()"
-                           bs-timepicker
-                           bs-show="showToTimePicker"
-                           data-time-format="HH:mm"
-                           data-minute-step="1"
-                           data-trigger="manual"
-                           data-autoclose="1"
-                           tks-focus="toTimeHasFocus"
-                           required />
-                    <span class="input-group-btn">
-                        <button type="button"
-                                class="btn btn-default"
-                                ng-click="handleToTimePickerButton()">
-                            <i class="glyphicon glyphicon-time"></i>
-                        </button>
+                    
+                    <span class="input-group">
+                        <input type="text"
+                               id="toTime"
+                               name="toTime"
+                               class="form-control"
+                               ng-model="daterange.toDate"
+                               ng-model-options="{ updateOn: 'blur' }"
+                               ng-blur="handleToTimeBlur()"
+                               bs-timepicker
+                               bs-show="showToTimePicker"
+                               data-time-format="HH:mm"
+                               data-minute-step="1"
+                               data-trigger="manual"
+                               data-autoclose="1"
+                               tks-focus="toTimeHasFocus"
+                               required />
+                        <span class="input-group-btn">
+                            <button type="button"
+                                    class="btn btn-default"
+                                    ng-click="handleToTimePickerButton()">
+                                <i class="glyphicon glyphicon-time"></i>
+                            </button>
+                        </span>
                     </span>
-                </div>
+                </span>
             </div>
             <div class="col-sm-6">
                 <div ng-show="(form.$submitted || form.toDate.$touched) && !form.toDate.$valid">

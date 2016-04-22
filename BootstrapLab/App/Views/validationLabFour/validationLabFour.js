@@ -2,10 +2,12 @@
     'use strict';
 
     angular.module('bootstrapLab')
-        .controller('validationLabFourController', ['$scope', validationLabFourController]);
+        .controller('validationLabFourController', ['$scope', 'dateService', validationLabFourController]);
 
-    function validationLabFourController($scope) {
+    function validationLabFourController($scope, dateService) {
         var vm = this;
+
+        $scope.testDate = dateService.getDatePart(new Date());
 
         $scope.daterange = {
             fromDate: new Date(),
