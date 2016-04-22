@@ -43,62 +43,152 @@
             </div>
         </div>
 
-        <!-- Time -->
+        <!-- From date/time -->
         <div class="form-group row">
-            <label for="testTime" class="form-control-label col-sm-2">Time</label>
+            <label for="testTime" class="form-control-label col-sm-2">From Date/Time</label>
             <div class="col-sm-3">
-                <div class="input-group">
+                <div class="input-group" style="margin-bottom: 5px;">
+                    <!--
+                        updateOn: 'blur' required unmerged fix to bsDatapicker found here
+                        https://github.com/mgcrea/angular-strap/issues/1668
+                    -->
                     <input type="text"
                            id="fromDate"
                            name="fromDate"
                            class="form-control"
-                           ng-model="daterange.from"
+                           ng-model="daterange.fromDate"
                            ng-model-options="{ updateOn: 'blur' }"
-                           ng-blur="handleDateBlur()"
+                           ng-blur="handleFromDateBlur()"
                            bs-datepicker
-                           bs-show="showDatepicker"
+                           bs-show="showFromDatePicker"
+                           data-date-format="M-d-yyyy hh:mm:ss"
                            data-trigger="manual"
                            data-autoclose="1"
-                           tks-focus="dateHasFocus"
+                           tks-focus="fromDateHasFocus"
                            required>
                     <span class="input-group-btn">
                         <button type="button"
                                 class="btn btn-default"
-                                ng-click="handleDatePickerButton()">
+                                ng-click="handleFromDatePickerButton()">
                             <i class="glyphicon glyphicon-calendar"></i>
                         </button>
                     </span>
 
+                </div>
+                <div class="input-group">
                     <input type="text"
                            id="fromTime"
                            name="fromTime"
                            class="form-control"
-                           ng-model="daterange.from"
+                           ng-model="daterange.fromTime"
                            ng-model-options="{ updateOn: 'blur' }"
-                           ng-blur="handleTimeBlur()"
+                           ng-blur="handleFromTimeBlur()"
                            bs-timepicker
-                           bs-show="showTimepicker"
+                           bs-show="showFromTimePicker"
                            data-time-format="HH:mm"
                            data-minute-step="1"
                            data-trigger="manual"
                            data-autoclose="1"
-                           tks-focus="timeHasFocus"
+                           tks-focus="fromTimeHasFocus"
                            required />
                     <span class="input-group-btn">
                         <button type="button"
                                 class="btn btn-default"
-                                ng-click="handleTimePickerButton()">
+                                ng-click="handleFromTimePickerButton()">
                             <i class="glyphicon glyphicon-time"></i>
                         </button>
                     </span>
                 </div>
             </div>
-            <div class="col-sm-6"
-                 ng-show="(form.$submitted || form.fromTime.$touched) && !form.fromTime.$valid">
-                <div style="color: red">
-                    <span style="font-size: larger; padding-right: 5px;"><b>!</b></span>
-                    <span ng-show='form.fromTime.$error.required'>Please enter a time</span>
-                    <span ng-show='form.fromTime.$error.date'>Please enter a 24 hour time in hh:mm form</span>
+            <div class="col-sm-6">
+                <div ng-show="(form.$submitted || form.fromDate.$touched) && !form.fromDate.$valid">
+                    <div style="color: red">
+                        <span style="font-size: larger; padding-right: 5px;"><b>!</b></span>
+                        <span ng-show='form.fromDate.$error.required'>Please enter a from date</span>
+                        <span ng-show='form.fromDate.$error.date'>Please enter a from date in m-d-yyyy form</span>
+                    </div>
+                </div>
+                <div ng-show="(form.$submitted || form.fromTime.$touched) && !form.fromTime.$valid">
+                    <div style="color: red">
+                        <span style="font-size: larger; padding-right: 5px;"><b>!</b></span>
+                        <span ng-show='form.fromTime.$error.required'>Please enter a from time</span>
+                        <span ng-show='form.fromTime.$error.date'>Please enter a 24 hour from time in hh:mm form</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- To date/time -->
+        <div class="form-group row">
+            <label for="testTime" class="form-control-label col-sm-2">To Date/Time</label>
+            <div class="col-sm-3">
+                <div class="input-group" style="margin-bottom: 5px;">
+                    <!--
+                    updateOn: 'blur' required unmerged fix to bsDatapicker found here
+                    https://github.com/mgcrea/angular-strap/issues/1668
+                -->
+                    <input type="text"
+                           id="toDate"
+                           name="toDate"
+                           class="form-control"
+                           ng-model="daterange.toDate"
+                           ng-model-options="{ updateOn: 'blur' }"
+                           ng-blur="handleToDateBlur()"
+                           bs-datepicker
+                           bs-show="showToDatePicker"
+                           data-date-format="M-d-yyyy"
+                           data-trigger="manual"
+                           data-autoclose="1"
+                           tks-focus="toDateHasFocus"
+                           required>
+                    <span class="input-group-btn">
+                        <button type="button"
+                                class="btn btn-default"
+                                ng-click="handleToDatePickerButton()">
+                            <i class="glyphicon glyphicon-calendar"></i>
+                        </button>
+                    </span>
+
+                </div>
+                <div class="input-group">
+                    <input type="text"
+                           id="toTime"
+                           name="toTime"
+                           class="form-control"
+                           ng-model="daterange.toTime"
+                           ng-model-options="{ updateOn: 'blur' }"
+                           ng-blur="handleToTimeBlur()"
+                           bs-timepicker
+                           bs-show="showToTimePicker"
+                           data-time-format="HH:mm"
+                           data-minute-step="1"
+                           data-trigger="manual"
+                           data-autoclose="1"
+                           tks-focus="toTimeHasFocus"
+                           required />
+                    <span class="input-group-btn">
+                        <button type="button"
+                                class="btn btn-default"
+                                ng-click="handleToTimePickerButton()">
+                            <i class="glyphicon glyphicon-time"></i>
+                        </button>
+                    </span>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div ng-show="(form.$submitted || form.toDate.$touched) && !form.toDate.$valid">
+                    <div style="color: red">
+                        <span style="font-size: larger; padding-right: 5px;"><b>!</b></span>
+                        <span ng-show='form.toDate.$error.required'>Please enter a to date</span>
+                        <span ng-show='form.toDate.$error.date'>Please enter a to date in m-d-yyyy form</span>
+                    </div>
+                </div>
+                <div ng-show="(form.$submitted || form.toTime.$touched) && !form.toTime.$valid">
+                    <div style="color: red">
+                        <span style="font-size: larger; padding-right: 5px;"><b>!</b></span>
+                        <span ng-show='form.toTime.$error.required'>Please enter a to time</span>
+                        <span ng-show='form.toTime.$error.date'>Please enter a 24 hour to time in hh:mm form</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -192,11 +282,10 @@
 
     <br />
 
-    <pre>user = {{user | json}}</pre>
-    <pre>master = {{master | json}}</pre>
+    <!--<pre>user = {{user | json}}</pre>
+    <pre>master = {{master | json}}</pre>-->
 
-    <!--<pre>time value = {{user.time | date: "HH:mm:ss"}}</pre>
-    <pre>form.time.$valid = {{form.time.$valid}}</pre>
-    <pre>form.time.$error = {{form.time.$error}}</pre>-->
+    <pre>daterange = {{daterange | json}}</pre>
+    <pre>form.fromDate = {{form.fromDate | json}}</pre>
 
 </div>

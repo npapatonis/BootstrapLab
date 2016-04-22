@@ -8,28 +8,53 @@
         var vm = this;
 
         $scope.daterange = {
-            from: new Date(),
-            to: new Date()
+            fromDate: new Date(),
+            fromTime: new Date(),
+            toDate: new Date(),
+            toTime: new Date()
         };
 
-        $scope.dateHasFocus = false;
-        $scope.showDatepicker = false;
-        $scope.handleDatePickerButton = function () {
-            if (!$scope.showDatepicker) $scope.showDatepicker = true;
-            $scope.dateHasFocus = true;
+        // From date control
+        $scope.fromDateHasFocus = false;
+        $scope.showFromDatePicker = false;
+        $scope.handleFromDatePickerButton = function () {
+            if (!$scope.showFromDatePicker) $scope.showFromDatePicker = true;
+            $scope.fromDateHasFocus = true;
         }
-        $scope.handleDateBlur = function () {
-            $scope.showDatepicker = false;
+        $scope.handleFromDateBlur = function () {
+            $scope.showFromDatePicker = false;
         }
 
-        $scope.timeHasFocus = false;
-        $scope.showTimepicker = false;
-        $scope.handleTimePickerButton = function () {
-            if (!$scope.showTimepicker) $scope.showTimepicker = true;
-            $scope.timeHasFocus = true;
+        // From time control
+        $scope.fromTimeHasFocus = false;
+        $scope.showFromTimePicker = false;
+        $scope.handleFromTimePickerButton = function () {
+            if (!$scope.showFromTimePicker) $scope.showFromTimePicker = true;
+            $scope.fromTimeHasFocus = true;
         }
-        $scope.handleTimeBlur = function () {
-            $scope.showTimepicker = false;
+        $scope.handleFromTimeBlur = function () {
+            $scope.showFromTimePicker = false;
+        }
+
+        // To date control
+        $scope.toDateHasFocus = false;
+        $scope.showToDatePicker = false;
+        $scope.handleToDatePickerButton = function () {
+            if (!$scope.showToDatePicker) $scope.showToDatePicker = true;
+            $scope.toDateHasFocus = true;
+        }
+        $scope.handleToDateBlur = function () {
+            $scope.showToDatePicker = false;
+        }
+
+        $scope.toTimeHasFocus = false;
+        $scope.showToTimePicker = false;
+        $scope.handleToTimePickerButton = function () {
+            if (!$scope.showToTimePicker) $scope.showToTimePicker = true;
+            $scope.toTimeHasFocus = true;
+        }
+        $scope.handleToTimeBlur = function () {
+            $scope.showToTimePicker = false;
         }
 
         $scope.master = {};

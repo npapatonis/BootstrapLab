@@ -75,6 +75,7 @@
     <Content Include="App\Views\validationLabThree\validationLabThree.js" />
     <Content Include="App\Views\validationLabTwo\validationLabTwo.html" />
     <Content Include="App\Views\validationLabTwo\validationLabTwo.js" />
+    <Content Include="Content\bootstrap-additions.css" />
     <Content Include="packages.config" />
     <Content Include="Scripts\angular.min.js.map" />
     <Content Include="Scripts\angular-animate.min.js.map" />
