@@ -1,7 +1,6 @@
 ﻿<div class="form-group" ng-controller="validationLabFourController">
     <form name="form" class="css-form" novalidate>
         <h2>Validation Lab Four</h2>
-
         <!-- User name -->
         <div class="form-group row">
             <label for="uName" class="form-control-label col-sm-2">Name</label>
@@ -21,7 +20,6 @@
                 </div>
             </div>
         </div>
-
         <!-- Email -->
         <div class="form-group row">
             <label for="uEmail" class="form-control-label col-sm-2">Email</label>
@@ -42,7 +40,6 @@
                 </div>
             </div>
         </div>
-
         <!-- From date/time -->
         <div class="form-group row">
             <label for="testTime" class="form-control-label col-sm-2">From Date/Time</label>
@@ -61,7 +58,7 @@
                            ng-blur="handleFromDateBlur()"
                            bs-datepicker
                            bs-show="showFromDatePicker"
-                           data-date-format="M-d-yyyy hh:mm:ss"
+                           data-date-format="M-d-yyyy"
                            data-trigger="manual"
                            data-autoclose="1"
                            tks-focus="fromDateHasFocus"
@@ -73,7 +70,6 @@
                             <i class="glyphicon glyphicon-calendar"></i>
                         </button>
                     </span>
-
                 </div>
                 <div class="input-group">
                     <input type="text"
@@ -117,65 +113,65 @@
                 </div>
             </div>
         </div>
-
         <!-- To date/time -->
         <div class="form-group row">
             <label for="testTime" class="form-control-label col-sm-2">To Date/Time</label>
             <div class="col-sm-3">
-                <span>
-                    <span class="input-group">
-                        <!--
-                        updateOn: 'blur' required unmerged fix to bsDatapicker found here
-                        https://github.com/mgcrea/angular-strap/issues/1668
-                        -->
-                        <input type="text"
-                               id="toDate"
-                               name="toDate"
-                               class="form-control"
-                               ng-model="daterange.toDate"
-                               ng-model-options="{ updateOn: 'blur' }"
-                               ng-blur="handleToDateBlur()"
-                               bs-datepicker
-                               bs-show="showToDatePicker"
-                               data-date-format="M-d-yyyy hh:mm:ss"
-                               data-trigger="manual"
-                               data-autoclose="1"
-                               tks-focus="toDateHasFocus"
-                               required>
-                        <span class="input-group-btn">
-                            <button type="button"
-                                    class="btn btn-default"
-                                    ng-click="handleToDatePickerButton()">
-                                <i class="glyphicon glyphicon-calendar"></i>
-                            </button>
-                        </span>
+                <div class="input-group" style="margin-bottom: 5px;">
+                    <!--
+                    updateOn: 'blur' required unmerged fix to bsDatapicker found here
+                    https://github.com/mgcrea/angular-strap/issues/1668
+                    -->
+                    <input type="text"
+                           id="toDate"
+                           name="toDate"
+                           class="form-control"
+                           ng-model="daterange.toDate"
+                           ng-model-options="{ updateOn: 'blur' }"
+                           ng-blur="handleToDateBlur()"
+                           bs-datepicker
+                           bs-show="showToDatePicker"
+                           data-date-format="M-d-yyyy"
+                           data-trigger="manual"
+                           data-autoclose="1"
+                           ui-validate=" 'isValidDateRange(form.fromDate.$dateValue, form.fromTime.$dateValue, $value, form.toTime.$dateValue)' "
+                           ui-validate-watch=" 'daterange.fromDateTime' "
+                           tks-focus="toDateHasFocus"
+                           required>
+                    <span class="input-group-btn">
+                        <button type="button"
+                                class="btn btn-default"
+                                ng-click="handleToDatePickerButton()">
+                            <i class="glyphicon glyphicon-calendar"></i>
+                        </button>
                     </span>
-                    
-                    <span class="input-group">
-                        <input type="text"
-                               id="toTime"
-                               name="toTime"
-                               class="form-control"
-                               ng-model="daterange.toDate"
-                               ng-model-options="{ updateOn: 'blur' }"
-                               ng-blur="handleToTimeBlur()"
-                               bs-timepicker
-                               bs-show="showToTimePicker"
-                               data-time-format="HH:mm"
-                               data-minute-step="1"
-                               data-trigger="manual"
-                               data-autoclose="1"
-                               tks-focus="toTimeHasFocus"
-                               required />
-                        <span class="input-group-btn">
-                            <button type="button"
-                                    class="btn btn-default"
-                                    ng-click="handleToTimePickerButton()">
-                                <i class="glyphicon glyphicon-time"></i>
-                            </button>
-                        </span>
+                </div>
+                <div class="input-group">
+                    <input type="text"
+                           id="toTime"
+                           name="toTime"
+                           class="form-control"
+                           ng-model="daterange.toTime"
+                           ng-model-options="{ updateOn: 'blur' }"
+                           ng-blur="handleToTimeBlur()"
+                           bs-timepicker
+                           bs-show="showToTimePicker"
+                           data-time-format="HH:mm"
+                           data-minute-step="1"
+                           data-trigger="manual"
+                           data-autoclose="1"
+                           ui-validate=" 'isValidDateRange(form.fromDate.$dateValue, form.fromTime.$dateValue, form.toDate.$dateValue, $value)' "
+                           ui-validate-watch=" 'daterange.fromDateTime' "
+                           tks-focus="toTimeHasFocus"
+                           required />
+                    <span class="input-group-btn">
+                        <button type="button"
+                                class="btn btn-default"
+                                ng-click="handleToTimePickerButton()">
+                            <i class="glyphicon glyphicon-time"></i>
+                        </button>
                     </span>
-                </span>
+                </div>
             </div>
             <div class="col-sm-6">
                 <div ng-show="(form.$submitted || form.toDate.$touched) && !form.toDate.$valid">
@@ -183,6 +179,7 @@
                         <span style="font-size: larger; padding-right: 5px;"><b>!</b></span>
                         <span ng-show='form.toDate.$error.required'>Please enter a to date</span>
                         <span ng-show='form.toDate.$error.date'>Please enter a to date in m-d-yyyy form</span>
+                        <span ng-show='form.toDate.$error.validator'>Please enter a to date &amp; time that is after the from date &amp; time</span>
                     </div>
                 </div>
                 <div ng-show="(form.$submitted || form.toTime.$touched) && !form.toTime.$valid">
@@ -190,11 +187,11 @@
                         <span style="font-size: larger; padding-right: 5px;"><b>!</b></span>
                         <span ng-show='form.toTime.$error.required'>Please enter a to time</span>
                         <span ng-show='form.toTime.$error.date'>Please enter a 24 hour to time in hh:mm form</span>
+                        <span ng-show='form.toTime.$error.validator'>Please enter a to date &amp; time that is after the from date &amp; time</span>
                     </div>
                 </div>
             </div>
         </div>
-
         <!-- Gender -->
         <div class="form-group row">
             <label class="col-sm-2">Gender</label>
@@ -228,7 +225,6 @@
                 </div>
             </div>
         </div>
-
         <!-- Agree checkbox -->
         <div class="form-group row">
             <div class="col-sm-offset-2 col-sm-3">
@@ -251,7 +247,6 @@
                 </div>
             </div>
         </div>
-
         <!-- Signature -->
         <div ng-show="user.agree">
             <div class="form-group row">
@@ -273,21 +268,18 @@
                 </div>
             </div>
         </div>
-
         <div class="form-group row">
             <div class="col-sm-offset-2 col-sm-10">
                 <input type="submit" class="btn btn-primary" ng-click="update(user)" value="Save" />
                 <input type="button" class="btn btn-secondary" ng-click="reset(form)" value="Reset" />
             </div>
         </div>
+        iv
+        m>
     </form>
-
     <br />
-
     <!--<pre>user = {{user | json}}</pre>
     <pre>master = {{master | json}}</pre>-->
-
     <pre>daterange = {{daterange | json}}</pre>
-    <pre>form.fromDate = {{form.fromDate | json}}</pre>
-
+    <pre>form.toDate = {{form.toDate | json}}</pre>
 </div>

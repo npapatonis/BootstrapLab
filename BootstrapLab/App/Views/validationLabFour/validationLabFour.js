@@ -7,14 +7,36 @@
     function validationLabFourController($scope, dateService) {
         var vm = this;
 
-        $scope.testDate = dateService.getDatePart(new Date());
-
+        var now = new Date();
         $scope.daterange = {
-            fromDate: new Date(),
-            fromTime: new Date(),
-            toDate: new Date(),
-            toTime: new Date()
+            fromDate: dateService.addDays(dateService.getDatePart(now), -1),
+            fromTime: dateService.getTimePart(now),
+            toDate: dateService.getDatePart(now),
+            toTime: dateService.getTimePart(now)
         };
+
+        $scope.isValidDateRange = function (fromDate, fromTime, toDate, toTime) {
+            var fromDateTime = dateService.combineDateAndTime(fromDate, fromTime);
+            var toDateTime = dateService.combineDateAndTime(toDate, toTime);
+            return fromDateTime < toDateTime;
+        };
+
+
+        //$scope.$watch('daterange.fromDate', function (newValue, oldValue) {
+        //    $scope.daterange.fromDateTime = dateService.combineDateAndTime($scope.daterange.fromDate, $scope.daterange.fromTime);
+        //});
+
+        //$scope.$watch('daterange.fromTime', function (newValue, oldValue) {
+        //    $scope.daterange.fromDateTime = dateService.combineDateAndTime($scope.daterange.fromDate, $scope.daterange.fromTime);
+        //});
+
+        //$scope.$watch('daterange.toDate', function (newValue, oldValue) {
+        //    $scope.daterange.toDateTime = dateService.combineDateAndTime($scope.daterange.toDate, $scope.daterange.toTime);
+        //});
+
+        //$scope.$watch('daterange.toTime', function (newValue, oldValue) {
+        //    $scope.daterange.toDateTime = dateService.combineDateAndTime($scope.daterange.toDate, $scope.daterange.toTime);
+        //});
 
         // From date control
         $scope.fromDateHasFocus = false;

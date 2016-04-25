@@ -1,8 +1,4 @@
-﻿################################################################################
-# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
-################################################################################
-
-/BootstrapLab/obj/Debug
-/BootstrapLab/bin
-/.vs/config
-/.vs/BootstrapLab/v14
+.vs
+**/bin
+**/obj
+.gitignore

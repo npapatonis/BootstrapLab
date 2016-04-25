@@ -11,7 +11,9 @@
         var service = {
             getMonths: getMonths,
             getDatePart: getDatePart,
-            addDays: addDays
+            getTimePart: getTimePart,
+            addDays: addDays,
+            combineDateAndTime: combineDateAndTime
         };
 
         return service;
@@ -37,6 +39,10 @@
             return new Date(date.getFullYear(), date.getMonth(), date.getDate(), 0, 0, 0, 0);
         };
 
+        function getTimePart(date) {
+            return new Date(0, 0, 0, date.getHours(), date.getMinutes(), date.getSeconds(), date.getMilliseconds());
+        }
+
         function addDays(date, days) {
             var origTimezoneOffset = date.getTimezoneOffset();
 
@@ -52,6 +58,15 @@
             }
 
             return newDate;
+        }
+
+        function combineDateAndTime(date, time) {
+            var dateTime = new Date(date.getTime());
+            dateTime.setHours(time.getHours());
+            dateTime.setMinutes(time.getMinutes());
+            dateTime.setSeconds(time.getSeconds());
+            dateTime.setMilliseconds(time.getMilliseconds());
+            return dateTime;
         }
     }
 
