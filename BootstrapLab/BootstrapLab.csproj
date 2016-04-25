@@ -70,6 +70,8 @@
     <Content Include="App\Services\dateService.js" />
     <Content Include="App\Views\uibTooltip\uibTooltip.html" />
     <Content Include="App\Views\uibTooltip\uibTooltip.js" />
+    <Content Include="App\Views\validationLabFive\validationLabFive.html" />
+    <Content Include="App\Views\validationLabFive\validationLabFive.js" />
     <Content Include="App\Views\validationLabFour\validationLabFour.html" />
     <Content Include="App\Views\validationLabFour\validationLabFour.js" />
     <Content Include="App\Views\validationLabThree\validationLabThree.html" />
