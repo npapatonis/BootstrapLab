@@ -53,7 +53,7 @@
                            id="fromDate"
                            name="fromDate"
                            class="form-control"
-                           ng-model="daterange.fromDate"
+                           ng-model="daterange.fromDateTime"
                            ng-model-options="{ updateOn: 'blur' }"
                            ng-blur="handleFromDateBlur()"
                            bs-datepicker
@@ -76,7 +76,7 @@
                            id="fromTime"
                            name="fromTime"
                            class="form-control"
-                           ng-model="daterange.fromTime"
+                           ng-model="daterange.fromDateTime"
                            ng-model-options="{ updateOn: 'blur' }"
                            ng-blur="handleFromTimeBlur()"
                            bs-timepicker
@@ -126,15 +126,15 @@
                            id="toDate"
                            name="toDate"
                            class="form-control"
-                           ng-model="daterange.toDate"
+                           ng-model="daterange.toDateTime"
                            ng-model-options="{ updateOn: 'blur' }"
                            ng-blur="handleToDateBlur()"
                            bs-datepicker
                            bs-show="showToDatePicker"
-                           data-date-format="M-d-yyyy HH:mm"
+                           data-date-format="M-d-yyyy"
                            data-trigger="manual"
                            data-autoclose="1"
-                           ui-validate=" 'isValidDateRange(form.fromDate.$dateValue, form.fromTime.$dateValue, $value, form.toTime.$dateValue)' "
+                           ui-validate=" '$value > daterange.fromDateTime' "
                            ui-validate-watch=" 'daterange.fromDateTime' "
                            tks-focus="toDateHasFocus"
                            required>
@@ -145,19 +145,13 @@
                             <i class="glyphicon glyphicon-calendar"></i>
                         </button>
                     </span>
-                    <span class="input-group-btn">
-                        <button type="button"
-                                class="btn btn-default"
-                                ng-click="handleToTimePickerButton()">
-                            <i class="glyphicon glyphicon-time"></i>
-                        </button>
-                    </span>
+                </div>
+                <div class="input-group">
                     <input type="text"
                            id="toTime"
                            name="toTime"
                            class="form-control"
-                           style="display: none"
-                           ng-model="daterange.toTime"
+                           ng-model="daterange.toDateTime"
                            ng-model-options="{ updateOn: 'blur' }"
                            ng-blur="handleToTimeBlur()"
                            bs-timepicker
@@ -167,12 +161,17 @@
                            data-trigger="manual"
                            data-autoclose="1"
                            data-container="body"
-                           ui-validate=" 'isValidDateRange(form.fromDate.$dateValue, form.fromTime.$dateValue, form.toDate.$dateValue, $value)' "
+                           ui-validate=" '$value > daterange.fromDateTime' "
                            ui-validate-watch=" 'daterange.fromDateTime' "
                            tks-focus="toTimeHasFocus"
                            required />
-                </div>
-                <div class="input-group">
+                    <span class="input-group-btn">
+                        <button type="button"
+                                class="btn btn-default"
+                                ng-click="handleToTimePickerButton()">
+                            <i class="glyphicon glyphicon-time"></i>
+                        </button>
+                    </span>
                 </div>
             </div>
             <div class="col-sm-6">

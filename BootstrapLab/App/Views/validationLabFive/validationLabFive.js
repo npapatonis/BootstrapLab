@@ -9,18 +9,15 @@
 
         var now = new Date();
         $scope.daterange = {
-            fromDate: dateService.addDays(dateService.getDatePart(now), -1),
-            fromTime: dateService.getTimePart(now),
-            toDate: now,
-            toTime: dateService.getTimePart(now)
+            fromDateTime: dateService.addDays(now, -1),
+            toDateTime: now,
         };
 
-        $scope.isValidDateRange = function (fromDate, fromTime, toDate, toTime) {
-            var fromDateTime = dateService.combineDateAndTime(fromDate, fromTime);
-            var toDateTime = dateService.combineDateAndTime(toDate, toTime);
-            return fromDateTime < toDateTime;
-        };
-
+        //$scope.isValidDateRange = function (fromDate, fromTime, toDate, toTime) {
+        //    var fromDateTime = dateService.combineDateAndTime(fromDate, fromTime);
+        //    var toDateTime = dateService.combineDateAndTime(toDate, toTime);
+        //    return fromDateTime < toDateTime;
+        //};
 
         //$scope.$watch('daterange.fromDate', function (newValue, oldValue) {
         //    $scope.daterange.fromDateTime = dateService.combineDateAndTime($scope.daterange.fromDate, $scope.daterange.fromTime);
