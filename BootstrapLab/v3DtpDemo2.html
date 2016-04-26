@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <link href="Content/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="Content/bootstrap-datetimepicker.css" rel="stylesheet" type="text/css" />
+
+    <script src="Scripts/angular.js"></script>
+    <script src="Scripts/jquery-1.9.1.js"></script>
+    <script src="Scripts/moment.js"></script>
+    <script src="Scripts/bootstrap.js"></script>
+    <script src="Scripts/bootstrap-datetimepicker.js"></script>
+    <script src="App/Directives/angular-eonasdan-datetimepicker.js"></script>
+
+    <script>
+        angular.module('dtpDemo', ['ae-datetimepicker'])
+            .controller('dtpDemoController', ['$scope', dtpDemoController]);
+
+        function dtpDemoController($scope) {
+            $scope.daterange = {
+                fromDateTime: new Date(),
+                toDateTime: new Date()
+            };
+        }
+    </script>
+</head>
+<body ng-app="dtpDemo">
+    <div ng-controller="dtpDemoController">
+        <form name="form" class="css-form" novalidate>
+            <h2>Bootstrap v3 Date Time Picker</h2>
+
+            <div style="max-width: 250px">
+                <div name="inputDiv"
+                     class="input-group input-group-sm date"
+                     ng-model="daterange.toDateTime"
+                     datetimepicker
+                     options="{{options}}"
+                     required>
+                    <input name="inputDate" type="text" class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+
+        </form>
+        <br />
+        <pre>daterange = {{daterange | json}}</pre>
+        <pre>form.inputDiv = {{form.inputDiv | json}}</pre>
+    </div>
+</body>
+</html>

@@ -151,6 +151,7 @@
     <Content Include="Scripts\validate.js" />
     <Content Include="uiValidateDemo.html" />
     <Content Include="v3DtpDemo.html" />
+    <Content Include="v3DtpDemo2.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
