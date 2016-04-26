@@ -3,16 +3,12 @@
 <head>
     <link href="Content/bootstrap.css" rel="stylesheet" type="text/css" />
     <link href="Content/ui-bootstrap-csp.css" rel="stylesheet" type="text/css" />
-    <link href="Content/bootstrap-additions.css" rel="stylesheet" type="text/css" />
 
     <script src="Scripts/angular.js"></script>
     <script src="Scripts/angular-ui-router.js"></script>
     <script src="Scripts/angular-animate.js"></script>
     <script src="Scripts/angular-ui/ui-bootstrap-tpls.js"></script>
     <script src="Scripts/validate.js"></script>
-    <script src="Scripts/angular-strap.js"></script>
-    <script src="Scripts/angular-strap.tpl.js"></script>
-    <script src="Scripts/datetimepicker.js"></script>
     <script src="App/app.js"></script>
     <script src="App/Services/dateService.js"></script>
     <script src="App/Directives/focus.js"></script>
@@ -20,7 +16,21 @@
     <script src="App/Views/validationLabTwo/validationLabTwo.js"></script>
     <script src="App/Views/validationLabFour/validationLabFour.js"></script>
     <script src="App/Views/validationLabFive/validationLabFive.js"></script>
+    <script src="App/Views/dalelottsDateTimePicker/dalelottsDateTimePicker.js"></script>
     <script src="App/Views/uibTooltip/uibTooltip.js"></script>
+
+    <!-- To support AngularStrap -->
+    <link href="Content/bootstrap-additions.css" rel="stylesheet" type="text/css" />
+    <script src="Scripts/angular-strap.js"></script>
+    <script src="Scripts/angular-strap.tpl.js"></script>
+
+    <!-- To support dalelotts' datetimepicker and example -->
+    <link href="Content/datetimepicker.css" rel="stylesheet" type="text/css" />
+    <script src="Scripts/jquery-1.9.1.js"></script>
+    <script src="Scripts/bootstrap.js"></script>
+    <script src="Scripts/moment.js"></script>
+    <script src="Scripts/datetimepicker.js"></script>
+    <script src="Scripts/datetimepicker.templates.js"></script>
 
     <style>
         .navbar {
@@ -54,6 +64,7 @@
                     Date/Time Input<b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
+                    <li><a ui-sref="dalelottsDateTimePicker">dalelotts Date Time Picker</a></li>
                     <li><a ui-sref="angularStrapDateTimeForm">Angular Strap Form</a></li>
                     <li><a ui-sref="uiBootstrapDateTimeForm">UI Bootstrap Form</a></li>
                 </ul>

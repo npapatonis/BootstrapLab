@@ -1,7 +1,7 @@
 ﻿(function () {
     "use strict";
 
-    angular.module('bootstrapLab', ['ui.router', 'ngAnimate', 'ui.bootstrap', 'ui.validate', 'mgcrea.ngStrap'])
+    angular.module('bootstrapLab', ['ui.router', 'ngAnimate', 'ui.bootstrap', 'ui.bootstrap.datetimepicker', 'mgcrea.ngStrap', 'ui.validate'])
         .config(config);
 
     function config($stateProvider, $urlRouterProvider) {
@@ -32,6 +32,10 @@
             .state('validationLabFive', {
                 url: '/validationLabFive',
                 templateUrl: 'App/Views/validationLabFive/validationLabFive.html'
+            })
+            .state('dalelottsDateTimePicker', {
+                url: '/dalelottsDateTimePicker',
+                templateUrl: 'App/Views/dalelottsDateTimePicker/dalelottsDateTimePicker.html'
             })
             .state('angularStrapDateTimeForm', {
                 url: '/angularStrapDateTimeForm',

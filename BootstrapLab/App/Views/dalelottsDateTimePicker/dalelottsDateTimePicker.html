@@ -1,0 +1,28 @@
+﻿<div class="form-group" ng-controller="dalelottsDateTimePickerController">
+    <form name="form" class="css-form" novalidate>
+        <h2>dalelotts Date Time Picker</h2>
+
+        Selected Date: {{ daterange.toDateTime | date:'yyyy-MM-dd a' }}
+        <!--<datetimepicker data-ng-model="daterange.toDateTime" data-datetimepicker-config="{ startView:'day', minView:'day' }" />-->
+
+        <!-- Date/time picker #1 -->
+        <div class="dropdown">
+            <a class="dropdown-toggle" id="dropdown2" role="button" data-toggle="dropdown" data-target="#">
+                <div class="input-group">
+                    <input id="toDateTime" name="toDateTime" type="datetime" class="form-control" data-ng-model="daterange.toDateTime">
+                    <span class="input-group-addon">
+                        <i class="glyphicon glyphicon-calendar"></i>
+                    </span>
+                </div>
+            </a>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                <datetimepicker data-ng-model="daterange.toDateTime" 
+                                data-date-time-input="YYYY-MM-DD HH:mm a"
+                                data-datetimepicker-config="{ dropdownSelector: '#dropdown2' }" />
+            </ul>
+        </div>
+    </form>
+    <br />
+    <pre>daterange = {{daterange | json}}</pre>
+    <pre>form.toDateTime = {{form.toDateTime | json}}</pre>
+</div>

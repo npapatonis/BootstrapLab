@@ -68,6 +68,8 @@
   <ItemGroup>
     <Content Include="App\Directives\focus.js" />
     <Content Include="App\Services\dateService.js" />
+    <Content Include="App\Views\dalelottsDateTimePicker\dalelottsDateTimePicker.html" />
+    <Content Include="App\Views\dalelottsDateTimePicker\dalelottsDateTimePicker.js" />
     <Content Include="App\Views\uibTooltip\uibTooltip.html" />
     <Content Include="App\Views\uibTooltip\uibTooltip.js" />
     <Content Include="App\Views\validationLabFive\validationLabFive.html" />
@@ -79,10 +81,12 @@
     <Content Include="App\Views\validationLabTwo\validationLabTwo.html" />
     <Content Include="App\Views\validationLabTwo\validationLabTwo.js" />
     <Content Include="Content\bootstrap-additions.css" />
+    <Content Include="Content\datetimepicker.css" />
     <Content Include="packages.config" />
     <Content Include="Scripts\angular.min.js.map" />
     <Content Include="Scripts\angular-animate.min.js.map" />
     <Content Include="Scripts\datetimepicker.js" />
+    <Content Include="Scripts\datetimepicker.templates.js" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -133,6 +137,10 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\moment-with-locales.js" />
+    <Content Include="Scripts\moment-with-locales.min.js" />
+    <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\moment.min.js" />
     <Content Include="Scripts\validate.js" />
     <Content Include="uiValidateDemo.html" />
     <Content Include="Web.config" />
