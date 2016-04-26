@@ -68,6 +68,8 @@
   <ItemGroup>
     <Content Include="App\Directives\focus.js" />
     <Content Include="App\Services\dateService.js" />
+    <Content Include="App\Views\bootstrap3Datepicker\bootstrap3Datepicker.html" />
+    <Content Include="App\Views\bootstrap3Datepicker\bootstrap3Datepicker.js" />
     <Content Include="App\Views\dalelottsDateTimePicker\dalelottsDateTimePicker.html" />
     <Content Include="App\Views\dalelottsDateTimePicker\dalelottsDateTimePicker.js" />
     <Content Include="App\Views\uibTooltip\uibTooltip.html" />
@@ -81,10 +83,15 @@
     <Content Include="App\Views\validationLabTwo\validationLabTwo.html" />
     <Content Include="App\Views\validationLabTwo\validationLabTwo.js" />
     <Content Include="Content\bootstrap-additions.css" />
+    <Content Include="Content\bootstrap-datetimepicker.css" />
+    <Content Include="Content\bootstrap-datetimepicker.min.css" />
     <Content Include="Content\datetimepicker.css" />
     <Content Include="packages.config" />
+    <Content Include="App\Directives\angular-eonasdan-datetimepicker.js" />
     <Content Include="Scripts\angular.min.js.map" />
     <Content Include="Scripts\angular-animate.min.js.map" />
+    <Content Include="Scripts\bootstrap-datetimepicker.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
     <Content Include="Scripts\datetimepicker.js" />
     <Content Include="Scripts\datetimepicker.templates.js" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
@@ -143,6 +150,7 @@
     <Content Include="Scripts\moment.min.js" />
     <Content Include="Scripts\validate.js" />
     <Content Include="uiValidateDemo.html" />
+    <Content Include="v3DtpDemo.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
