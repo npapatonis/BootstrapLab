@@ -1,23 +1,34 @@
-﻿<div class="form-group" ng-controller="bootstrap3Datepicker">
-    <form name="form" class="css-form" novalidate>
-        <h2>Bootstrap v3 Date Time Picker</h2>
+﻿<div class="container" ng-controller="bootstrap3Datepicker">
+    <h2>Bootstrap v3 Date Time Picker</h2>
 
-        <div style="max-width: 250px">
-            <div name="inputDiv"
-                 class="input-group input-group-sm date"
-                 ng-model="daterange.toDateTime"
-                 datetimepicker
-                 options="{{options}}"
-                 required>
-                <input name="inputDate" type="text" class="form-control" />
-                <span class="input-group-addon">
-                    <span class="glyphicon glyphicon-calendar"></span>
-                </span>
+    <!--
+                         ng-model-options="{ updateOn: 'blur' }"
+    -->
+
+    <form name="form" novalidate>
+        <div class="row">
+            <div class='col-sm-4'>
+                <div class="form-group">
+                    <div id="toDateTime"
+                         name="toDateTime"
+                         class="input-group input-group-sm date"
+                         ng-model="daterange.toDateTime"
+                         ng-model-options="{ updateOn: 'blur' }"
+                         datetimepicker
+                         options="{{options}}"
+                         required>
+                        <input type="text" class="form-control" />
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class='col-sm-8'>
+                <pre>daterange = {{daterange | json}}</pre>
+                <pre>form.toDateTime = {{form.toDateTime | json}}</pre>
             </div>
         </div>
-
     </form>
     <br />
-    <pre>daterange = {{daterange | json}}</pre>
-    <pre>form.inputDiv = {{form.inputDiv | json}}</pre>
 </div>

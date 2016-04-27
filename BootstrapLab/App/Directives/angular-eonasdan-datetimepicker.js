@@ -27,6 +27,11 @@
                         $scope.onClick();
                     });
 
+                    $element.on('blur', function () {
+                        var viewVal = controller.$viewValue;
+                        var modelVal = controller.$modelValue;
+                    });
+
                     controller.$render = function () {
                         if (!!controller) {
                             if (controller.$viewValue === undefined) {
