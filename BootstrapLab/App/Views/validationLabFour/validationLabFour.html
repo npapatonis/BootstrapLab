@@ -59,19 +59,25 @@
                            bs-datepicker
                            bs-show="showFromDatePicker"
                            data-date-format="M-d-yyyy"
+                           data-max-date="{{daterange.toDate}}"
                            data-trigger="manual"
                            data-autoclose="1"
                            ui-validate=" 'isValidDateRange()' "
                            ui-validate-watch="['daterange.fromTime', 'daterange.toDate', 'daterange.toTime']"
                            tks-focus="fromDateHasFocus"
                            required>
-                    <span class="input-group-btn">
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"
+                              ng-click="handleFromDatePickerButton()">
+                        </span>
+                    </span>
+                    <!--<span class="input-group-btn">
                         <button type="button"
                                 class="btn btn-default"
                                 ng-click="handleFromDatePickerButton()">
                             <i class="glyphicon glyphicon-calendar"></i>
                         </button>
-                    </span>
+                    </span>-->
                 </div>
                 <div class="input-group">
                     <input type="text"
@@ -87,8 +93,6 @@
                            data-minute-step="1"
                            data-trigger="manual"
                            data-autoclose="1"
-                           ui-validate=" 'isValidDateRange()' "
-                           ui-validate-watch="['daterange.fromDate', 'daterange.toDate', 'daterange.toTime']"
                            tks-focus="fromTimeHasFocus"
                            required />
                     <span class="input-group-btn">
@@ -101,13 +105,13 @@
                 </div>
             </div>
             <div class="col-sm-6">
-                <div ng-show="(form.$submitted || form.fromDate.$touched || form.fromTime.$touched || form.toDate.$touched || form.toTime.$touched) && (form.fromDate.$error.validator || form.fromTime.$error.validator || form.toDate.$error.validator || form.toTime.$error.validator)">
+                <div ng-show="(form.$submitted || form.fromDate.$touched || form.fromTime.$touched || form.toDate.$touched || form.toTime.$touched) && form.fromDate.$error.validator">
                     <div style="color: red">
                         <span style="font-size: larger; padding-right: 5px;"><b>!</b></span>
-                        <span>Please enter a To Date &amp; Time that is after the From Date &amp; Time</span>
+                        <span>Please enter a To Date/Time that is after the From Date/Time</span>
                     </div>
                 </div>
-                <div ng-show="(form.$submitted || form.fromDate.$touched) && form.fromDate.$invalid">
+                <div ng-show="(form.$submitted || form.fromDate.$touched) && form.fromDate.$invalid && !form.fromDate.$error.validator">
                     <div style="color: red">
                         <span style="font-size: larger; padding-right: 5px;"><b>!</b></span>
                         <span ng-show='form.fromDate.$error.required'>Please enter a from date</span>
@@ -142,10 +146,9 @@
                            bs-datepicker
                            bs-show="showToDatePicker"
                            data-date-format="M-d-yyyy"
+                           data-min-date="{{daterange.fromDate}}"
                            data-trigger="manual"
                            data-autoclose="1"
-                           ui-validate=" 'isValidDateRange()' "
-                           ui-validate-watch="['daterange.fromDate', 'daterange.fromTime', 'daterange.toTime']"
                            tks-focus="toDateHasFocus"
                            required>
                     <span class="input-group-btn">
@@ -170,8 +173,6 @@
                            data-minute-step="1"
                            data-trigger="manual"
                            data-autoclose="1"
-                           ui-validate=" 'isValidDateRange()' "
-                           ui-validate-watch="['daterange.fromDate', 'daterange.fromTime', 'daterange.toDate']"
                            tks-focus="toTimeHasFocus"
                            required />
                     <span class="input-group-btn">
