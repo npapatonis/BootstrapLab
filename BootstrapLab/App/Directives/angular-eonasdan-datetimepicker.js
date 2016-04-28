@@ -17,6 +17,8 @@
                 link: function ($scope, $element, $attrs, controller) {
 
                     var updateOnBlur = false;
+                    var changed = false;
+
                     if ($attrs.ngModelOptions) {
                         var modelOptions = $scope.$eval($attrs.ngModelOptions);
                         if (modelOptions.updateOn) {
@@ -28,33 +30,46 @@
                     console.log("updateOnBlur = " + updateOnBlur);
 
                     $element.on('dp.change', function () {
-                        console.log("on dp.change 1");
-                        $timeout(function () {
-                            console.log("on dp.change 2");
-                            if (!updateOnBlur) {
-                                console.log("on dp.change 3");
+                        if (!updateOnBlur) {
+                            $timeout(function () {
                                 var dtp = $element.data('DateTimePicker');
-                                controller.$setViewValue(dtp.date());
-                            }
-                            console.log("on dp.change 4");
+                                var dtpDate = dtp.date();
+                                console.log("on dp.change, dtpDate = " + dtpDate.format());
+                                controller.$setViewValue(dtpDate);
+                                $scope.onChange();
+                            });
+                        }
+                        else {
+                            changed = true;
+                            console.log("on dp.change, changed = " + changed);
                             $scope.onChange();
-                            console.log("on dp.change 5");
-                        });
+                        }
                     });
 
                     $element.on('click', function () {
                         $scope.onClick();
                     });
 
+                    $element.on('focusin', function () {
+                        changed = false;
+                        console.log("on focusin, changed = " + changed);
+                    });
+
                     $element.on('focusout', function () {
-                        console.log("on focusout 1");
-                        if (updateOnBlur) {
-                            console.log("on focusout 2");
-                            $timeout(function () {
-                                console.log("on focusout 3");
+                        if (updateOnBlur && changed) {
+                            $scope.$apply(function () {
                                 var dtp = $element.data('DateTimePicker');
-                                controller.$setViewValue(dtp.date());
+                                var dtpDate = dtp.date();
+                                console.log("on focusout, dtpDate = " + dtpDate.format());
+                                controller.$setViewValue(dtpDate);
                             });
+
+                            //$timeout(function () {
+                            //    var dtp = $element.data('DateTimePicker');
+                            //    var dtpDate = dtp.date();
+                            //    console.log("on focusout, dtpDate = " + dtpDate.format());
+                            //    controller.$setViewValue(dtpDate);
+                            //});
                         }
                     });
 

@@ -54,13 +54,15 @@
                            name="fromDate"
                            class="form-control"
                            ng-model="daterange.fromDate"
-                           ng-model-options="{ updateOn: 'blur' }"
+                           ng-model-options="{ updateOn: 'blur', allowInvalid: true }"
                            ng-blur="handleFromDateBlur()"
                            bs-datepicker
                            bs-show="showFromDatePicker"
                            data-date-format="M-d-yyyy"
                            data-trigger="manual"
                            data-autoclose="1"
+                           ui-validate=" 'isValidDateRange()' "
+                           ui-validate-watch="['daterange.fromTime', 'daterange.toDate', 'daterange.toTime']"
                            tks-focus="fromDateHasFocus"
                            required>
                     <span class="input-group-btn">
@@ -77,7 +79,7 @@
                            name="fromTime"
                            class="form-control"
                            ng-model="daterange.fromTime"
-                           ng-model-options="{ updateOn: 'blur' }"
+                           ng-model-options="{ updateOn: 'blur', allowInvalid: true }"
                            ng-blur="handleFromTimeBlur()"
                            bs-timepicker
                            bs-show="showFromTimePicker"
@@ -85,6 +87,8 @@
                            data-minute-step="1"
                            data-trigger="manual"
                            data-autoclose="1"
+                           ui-validate=" 'isValidDateRange()' "
+                           ui-validate-watch="['daterange.fromDate', 'daterange.toDate', 'daterange.toTime']"
                            tks-focus="fromTimeHasFocus"
                            required />
                     <span class="input-group-btn">
@@ -102,6 +106,7 @@
                         <span style="font-size: larger; padding-right: 5px;"><b>!</b></span>
                         <span ng-show='form.fromDate.$error.required'>Please enter a from date</span>
                         <span ng-show='form.fromDate.$error.date'>Please enter a from date in m-d-yyyy form</span>
+                        <span ng-show='form.fromDate.$error.validator || form.fromTime.$error.validator || form.toDate.$error.validator || form.toTime.$error.validator'>Please enter a To Date &amp; Time that is after the From Date &amp; Time</span>
                     </div>
                 </div>
                 <div ng-show="(form.$submitted || form.fromTime.$touched) && !form.fromTime.$valid">
@@ -127,15 +132,15 @@
                            name="toDate"
                            class="form-control"
                            ng-model="daterange.toDate"
-                           ng-model-options="{ updateOn: 'blur' }"
+                           ng-model-options="{ updateOn: 'blur', allowInvalid: true }"
                            ng-blur="handleToDateBlur()"
                            bs-datepicker
                            bs-show="showToDatePicker"
                            data-date-format="M-d-yyyy"
                            data-trigger="manual"
                            data-autoclose="1"
-                           ui-validate=" 'isValidDateRange(form.fromDate.$dateValue, form.fromTime.$dateValue, $value, form.toTime.$dateValue)' "
-                           ui-validate-watch=" 'daterange.fromDateTime' "
+                           ui-validate=" 'isValidDateRange()' "
+                           ui-validate-watch="['daterange.fromDate', 'daterange.fromTime', 'daterange.toTime']"
                            tks-focus="toDateHasFocus"
                            required>
                     <span class="input-group-btn">
@@ -152,7 +157,7 @@
                            name="toTime"
                            class="form-control"
                            ng-model="daterange.toTime"
-                           ng-model-options="{ updateOn: 'blur' }"
+                           ng-model-options="{ updateOn: 'blur', allowInvalid: true }"
                            ng-blur="handleToTimeBlur()"
                            bs-timepicker
                            bs-show="showToTimePicker"
@@ -160,8 +165,8 @@
                            data-minute-step="1"
                            data-trigger="manual"
                            data-autoclose="1"
-                           ui-validate=" 'isValidDateRange(form.fromDate.$dateValue, form.fromTime.$dateValue, form.toDate.$dateValue, $value)' "
-                           ui-validate-watch=" 'daterange.fromDateTime' "
+                           ui-validate=" 'isValidDateRange()' "
+                           ui-validate-watch="['daterange.fromDate', 'daterange.fromTime', 'daterange.toDate']"
                            tks-focus="toTimeHasFocus"
                            required />
                     <span class="input-group-btn">
@@ -179,7 +184,6 @@
                         <span style="font-size: larger; padding-right: 5px;"><b>!</b></span>
                         <span ng-show='form.toDate.$error.required'>Please enter a to date</span>
                         <span ng-show='form.toDate.$error.date'>Please enter a to date in m-d-yyyy form</span>
-                        <span ng-show='form.toDate.$error.validator'>Please enter a to date &amp; time that is after the from date &amp; time</span>
                     </div>
                 </div>
                 <div ng-show="(form.$submitted || form.toTime.$touched) && !form.toTime.$valid">
@@ -187,7 +191,6 @@
                         <span style="font-size: larger; padding-right: 5px;"><b>!</b></span>
                         <span ng-show='form.toTime.$error.required'>Please enter a to time</span>
                         <span ng-show='form.toTime.$error.date'>Please enter a 24 hour to time in hh:mm form</span>
-                        <span ng-show='form.toTime.$error.validator'>Please enter a to date &amp; time that is after the from date &amp; time</span>
                     </div>
                 </div>
             </div>

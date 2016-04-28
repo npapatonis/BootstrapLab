@@ -66,7 +66,6 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App\Directives\date-time-picker.js" />
     <Content Include="App\Directives\focus.js" />
     <Content Include="App\Services\dateService.js" />
     <Content Include="App\Views\bootstrap3Datepicker\bootstrap3Datepicker.html" />
@@ -151,8 +150,6 @@
     <Content Include="Scripts\moment.min.js" />
     <Content Include="Scripts\validate.js" />
     <Content Include="uiValidateDemo.html" />
-    <Content Include="v3DtpDemo.html" />
-    <Content Include="v3DtpDemo2.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

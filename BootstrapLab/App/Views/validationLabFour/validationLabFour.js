@@ -16,11 +16,16 @@
         };
 
         $scope.isValidDateRange = function (fromDate, fromTime, toDate, toTime) {
-            var fromDateTime = dateService.combineDateAndTime(fromDate, fromTime);
-            var toDateTime = dateService.combineDateAndTime(toDate, toTime);
+            var fromDateTime = dateService.combineDateAndTime($scope.daterange.fromDate, $scope.daterange.fromTime);
+            var toDateTime = dateService.combineDateAndTime($scope.daterange.toDate, $scope.daterange.toTime);
             return fromDateTime < toDateTime;
         };
 
+        //$scope.isValidDateRange = function (fromDate, fromTime, toDate, toTime) {
+        //    var fromDateTime = dateService.combineDateAndTime(fromDate, fromTime);
+        //    var toDateTime = dateService.combineDateAndTime(toDate, toTime);
+        //    return fromDateTime < toDateTime;
+        //};
 
         //$scope.$watch('daterange.fromDate', function (newValue, oldValue) {
         //    $scope.daterange.fromDateTime = dateService.combineDateAndTime($scope.daterange.fromDate, $scope.daterange.fromTime);
