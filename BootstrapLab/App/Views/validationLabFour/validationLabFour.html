@@ -101,15 +101,20 @@
                 </div>
             </div>
             <div class="col-sm-6">
-                <div ng-show="(form.$submitted || form.fromDate.$touched) && !form.fromDate.$valid">
+                <div ng-show="(form.$submitted || form.fromDate.$touched || form.fromTime.$touched || form.toDate.$touched || form.toTime.$touched) && (form.fromDate.$error.validator || form.fromTime.$error.validator || form.toDate.$error.validator || form.toTime.$error.validator)">
+                    <div style="color: red">
+                        <span style="font-size: larger; padding-right: 5px;"><b>!</b></span>
+                        <span>Please enter a To Date &amp; Time that is after the From Date &amp; Time</span>
+                    </div>
+                </div>
+                <div ng-show="(form.$submitted || form.fromDate.$touched) && form.fromDate.$invalid">
                     <div style="color: red">
                         <span style="font-size: larger; padding-right: 5px;"><b>!</b></span>
                         <span ng-show='form.fromDate.$error.required'>Please enter a from date</span>
                         <span ng-show='form.fromDate.$error.date'>Please enter a from date in m-d-yyyy form</span>
-                        <span ng-show='form.fromDate.$error.validator || form.fromTime.$error.validator || form.toDate.$error.validator || form.toTime.$error.validator'>Please enter a To Date &amp; Time that is after the From Date &amp; Time</span>
                     </div>
                 </div>
-                <div ng-show="(form.$submitted || form.fromTime.$touched) && !form.fromTime.$valid">
+                <div ng-show="(form.$submitted || form.fromTime.$touched) && form.fromTime.$invalid">
                     <div style="color: red">
                         <span style="font-size: larger; padding-right: 5px;"><b>!</b></span>
                         <span ng-show='form.fromTime.$error.required'>Please enter a from time</span>
@@ -179,14 +184,14 @@
                 </div>
             </div>
             <div class="col-sm-6">
-                <div ng-show="(form.$submitted || form.toDate.$touched) && !form.toDate.$valid">
+                <div ng-show="(form.$submitted || form.toDate.$touched) && form.toDate.$invalid">
                     <div style="color: red">
                         <span style="font-size: larger; padding-right: 5px;"><b>!</b></span>
                         <span ng-show='form.toDate.$error.required'>Please enter a to date</span>
                         <span ng-show='form.toDate.$error.date'>Please enter a to date in m-d-yyyy form</span>
                     </div>
                 </div>
-                <div ng-show="(form.$submitted || form.toTime.$touched) && !form.toTime.$valid">
+                <div ng-show="(form.$submitted || form.toTime.$touched) && form.toTime.$invalid">
                     <div style="color: red">
                         <span style="font-size: larger; padding-right: 5px;"><b>!</b></span>
                         <span ng-show='form.toTime.$error.required'>Please enter a to time</span>
@@ -279,8 +284,10 @@
         </div>
     </form>
     <br />
-    <!--<pre>user = {{user | json}}</pre>
-    <pre>master = {{master | json}}</pre>-->
-    <pre>daterange = {{daterange | json}}</pre>
-    <pre>form.toDate = {{form.toDate | json}}</pre>
+    <!--<pre>daterange = {{daterange | json}}</pre>
+    <pre>form.toDate = {{form.toDate | json}}</pre>-->
+    <pre>form.fromDate.$error.validator = {{form.fromDate.$error.validator}}</pre>
+    <pre>form.fromTime.$error.validator = {{form.fromTime.$error.validator}}</pre>
+    <pre>form.toDate.$error.validator = {{form.toDate.$error.validator}}</pre>
+    <pre>form.toTime.$error.validator = {{form.toTime.$error.validator}}</pre>
 </div>
