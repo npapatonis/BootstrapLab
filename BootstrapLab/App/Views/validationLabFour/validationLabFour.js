@@ -22,11 +22,11 @@
         };
 
         // From date control
-        $scope.fromDateHasFocus = false;
+        //$scope.fromDateHasFocus = false;
         $scope.showFromDatePicker = false;
         $scope.handleFromDatePickerButton = function () {
             if (!$scope.showFromDatePicker) $scope.showFromDatePicker = true;
-            $scope.fromDateHasFocus = true;
+            //$scope.fromDateHasFocus = true;
         }
         $scope.handleFromDateBlur = function () {
             $scope.showFromDatePicker = false;

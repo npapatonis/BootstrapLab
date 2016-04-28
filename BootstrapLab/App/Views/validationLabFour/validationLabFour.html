@@ -55,7 +55,7 @@
                            class="form-control"
                            ng-model="daterange.fromDate"
                            ng-model-options="{ updateOn: 'blur', allowInvalid: true }"
-                           ng-blur="handleFromDateBlur()"
+                           ng-blur="showFromDatePicker = false"
                            bs-datepicker
                            bs-show="showFromDatePicker"
                            data-date-format="M-d-yyyy"
@@ -64,11 +64,10 @@
                            data-autoclose="1"
                            ui-validate=" 'isValidDateRange()' "
                            ui-validate-watch="['daterange.fromTime', 'daterange.toDate', 'daterange.toTime']"
-                           tks-focus="fromDateHasFocus"
                            required>
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"
-                              ng-click="handleFromDatePickerButton()">
+                              ng-click="showFromDatePicker = !showFromDatePicker">
                         </span>
                     </span>
                     <!--<span class="input-group-btn">
