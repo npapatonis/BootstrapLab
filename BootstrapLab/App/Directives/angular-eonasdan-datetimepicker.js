@@ -15,11 +15,30 @@
                     onClick: '&'
                 },
                 link: function ($scope, $element, $attrs, controller) {
+
+                    var updateOnBlur = false;
+                    if ($attrs.ngModelOptions) {
+                        var modelOptions = $scope.$eval($attrs.ngModelOptions);
+                        if (modelOptions.updateOn) {
+                            if (modelOptions.updateOn === 'blur') {
+                                updateOnBlur = true;
+                            }
+                        }
+                    }
+                    console.log("updateOnBlur = " + updateOnBlur);
+
                     $element.on('dp.change', function () {
+                        console.log("on dp.change 1");
                         $timeout(function () {
-                            var dtp = $element.data('DateTimePicker');
-                            controller.$setViewValue(dtp.date());
+                            console.log("on dp.change 2");
+                            if (!updateOnBlur) {
+                                console.log("on dp.change 3");
+                                var dtp = $element.data('DateTimePicker');
+                                controller.$setViewValue(dtp.date());
+                            }
+                            console.log("on dp.change 4");
                             $scope.onChange();
+                            console.log("on dp.change 5");
                         });
                     });
 
@@ -27,9 +46,16 @@
                         $scope.onClick();
                     });
 
-                    $element.on('blur', function () {
-                        var viewVal = controller.$viewValue;
-                        var modelVal = controller.$modelValue;
+                    $element.on('focusout', function () {
+                        console.log("on focusout 1");
+                        if (updateOnBlur) {
+                            console.log("on focusout 2");
+                            $timeout(function () {
+                                console.log("on focusout 3");
+                                var dtp = $element.data('DateTimePicker');
+                                controller.$setViewValue(dtp.date());
+                            });
+                        }
                     });
 
                     controller.$render = function () {

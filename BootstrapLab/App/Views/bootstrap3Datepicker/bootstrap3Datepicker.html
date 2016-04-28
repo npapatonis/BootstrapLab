@@ -12,7 +12,7 @@
                     <div id="toDateTime"
                          name="toDateTime"
                          class="input-group input-group-sm date"
-                         ng-model="daterange.toDateTime"
+                         ng-model="daterange.fromDateTime"
                          ng-model-options="{ updateOn: 'blur' }"
                          datetimepicker
                          options="{{options}}"
@@ -26,6 +26,7 @@
             </div>
             <div class='col-sm-8'>
                 <pre>daterange = {{daterange | json}}</pre>
+                <pre>form.toDateTime = {{form.fromDateTime | json}}</pre>
                 <pre>form.toDateTime = {{form.toDateTime | json}}</pre>
             </div>
         </div>
