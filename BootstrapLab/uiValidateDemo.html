@@ -112,6 +112,7 @@
                                type="date"
                                required
                                ng-model="daterange.todate"
+                               ng-model-options="{ updateOn: 'blur', allowInvalid: true }"
                                ui-validate=" '$value>daterange.fromdate' "
                                ui-validate-watch=" 'daterange.fromdate' "
                                placeholder="To date">

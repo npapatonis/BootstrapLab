@@ -10,14 +10,19 @@
         var now = new Date();
         $scope.daterange = {
             fromDate: dateService.addDays(dateService.getDatePart(now), -1),
-            fromTime: dateService.getTimePart(now),
+            fromTime: dateService.getTimePart(now, 'm'),
             toDate: dateService.getDatePart(now),
-            toTime: dateService.getTimePart(now)
+            toTime: dateService.getTimePart(now, 'm')
         };
 
         $scope.isValidDateRange = function (fromDate, fromTime, toDate, toTime) {
+            if (!$scope.daterange.fromDate || !$scope.daterange.fromTime || !$scope.daterange.toDate || !$scope.daterange.toTime) {
+                return true;
+            }
+
             var fromDateTime = dateService.combineDateAndTime($scope.daterange.fromDate, $scope.daterange.fromTime);
             var toDateTime = dateService.combineDateAndTime($scope.daterange.toDate, $scope.daterange.toTime);
+
             return fromDateTime < toDateTime;
         };
 
