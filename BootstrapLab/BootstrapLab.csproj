@@ -86,6 +86,8 @@
     <Content Include="Content\bootstrap-datetimepicker.css" />
     <Content Include="Content\bootstrap-datetimepicker.min.css" />
     <Content Include="Content\datetimepicker.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\styles.css" />
     <Content Include="packages.config" />
     <Content Include="App\Directives\angular-eonasdan-datetimepicker.js" />
     <Content Include="Scripts\angular.min.js.map" />
