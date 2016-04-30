@@ -43,31 +43,12 @@
             <label for="testTime" class="form-control-label col-sm-2">From Date/Time</label>
             <div class="col-sm-3">
                 <div class="input-group" style="margin-bottom: 5px;">
-                    <!--
-                        updateOn: 'blur' required unmerged fix to bsDatapicker found here
-                        https://github.com/mgcrea/angular-strap/issues/1668
-                    -->
-                    <input type="text"
-                           id="fromDate"
-                           name="fromDate"
-                           class="form-control"
-                           ng-model="daterange.fromDateTime"
-                           ng-model-options="{ updateOn: 'blur' }"
-                           ng-blur="handleFromDateBlur()"
-                           bs-datepicker
-                           bs-show="showFromDatePicker"
-                           data-date-format="M-d-yyyy"
-                           data-trigger="manual"
-                           data-autoclose="1"
-                           tks-focus="fromDateHasFocus"
-                           required>
-                    <span class="input-group-btn">
-                        <button type="button"
-                                class="btn btn-default"
-                                ng-click="handleFromDatePickerButton()">
-                            <i class="glyphicon glyphicon-calendar"></i>
-                        </button>
-                    </span>
+                    <tks-date-input id="fromDate"
+                                    name="fromDate"
+                                    model="daterange.fromDate"
+                                    format="M-d-yyyy"
+                                    minDate="daterange.toDate">
+                    </tks-date-input>
                 </div>
                 <div class="input-group">
                     <input type="text"
