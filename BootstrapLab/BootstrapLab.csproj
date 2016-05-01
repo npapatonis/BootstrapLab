@@ -68,6 +68,7 @@
   <ItemGroup>
     <Content Include="App\Directives\blink.js" />
     <Content Include="App\Directives\focus.js" />
+    <Content Include="App\Directives\tksDateInput.js" />
     <Content Include="App\Services\dateService.js" />
     <Content Include="App\Views\bootstrap3Datepicker\bootstrap3Datepicker.html" />
     <Content Include="App\Views\bootstrap3Datepicker\bootstrap3Datepicker.js" />
@@ -87,6 +88,8 @@
     <Content Include="Content\bootstrap-datetimepicker.css" />
     <Content Include="Content\bootstrap-datetimepicker.min.css" />
     <Content Include="Content\datetimepicker.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\styles.css" />
     <Content Include="packages.config" />
     <Content Include="App\Directives\angular-eonasdan-datetimepicker.js" />
     <Content Include="Scripts\angular.min.js.map" />

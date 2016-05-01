@@ -39,8 +39,14 @@
             return new Date(date.getFullYear(), date.getMonth(), date.getDate(), 0, 0, 0, 0);
         };
 
-        function getTimePart(date) {
-            return new Date(0, 0, 0, date.getHours(), date.getMinutes(), date.getSeconds(), date.getMilliseconds());
+        function getTimePart(date, truncateTo) {
+            truncateTo = (truncateTo || ' ').toLowerCase();
+            var hours = date.getHours();
+            var minutes = ('h'.indexOf(truncateTo) === -1 ? date.getMinutes() : 0);
+            var seconds = ('hm'.indexOf(truncateTo) === -1 ? date.getSeconds() : 0);
+            var milliseconds = ('hms'.indexOf(truncateTo) === -1 ? date.getMilliseconds() : 0);
+
+            return new Date(0, 0, 0, hours, minutes, seconds, milliseconds);
         }
 
         function addDays(date, days) {
