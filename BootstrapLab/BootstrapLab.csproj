@@ -67,7 +67,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App\Directives\focus.js" />
-    <Content Include="App\Directives\tksDateInput.js" />
     <Content Include="App\Services\dateService.js" />
     <Content Include="App\Views\bootstrap3Datepicker\bootstrap3Datepicker.html" />
     <Content Include="App\Views\bootstrap3Datepicker\bootstrap3Datepicker.js" />
@@ -89,6 +88,7 @@
     <Content Include="Content\datetimepicker.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\styles.css" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="packages.config" />
     <Content Include="App\Directives\angular-eonasdan-datetimepicker.js" />
     <Content Include="Scripts\angular.min.js.map" />
@@ -98,6 +98,11 @@
     <Content Include="Scripts\datetimepicker.js" />
     <Content Include="Scripts\datetimepicker.templates.js" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\FontAwesome.otf" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
