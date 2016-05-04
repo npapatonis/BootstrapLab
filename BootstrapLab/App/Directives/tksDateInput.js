@@ -24,7 +24,8 @@
                 'data-autoclose="1" ' +
                 'required> ' +
                 '<span class="input-group-addon" ' +
-                'ng-click="handleButtonClick()"> ' +
+                //'ng-click="handleButtonClick()"> ' +
+                'ng-mousedown="handleMouseDown()"> ' +
                 '<span class="glyphicon glyphicon-calendar"> ' +
                 '</span> ' +
                 '</span> ' +
@@ -41,6 +42,7 @@
                 scope.showDatePicker = false;
 
                 scope.handleInputBlur = function () {
+                    console.log("input blur");
                     scope.showDatePicker = false;
                 };
 
@@ -49,6 +51,10 @@
 
                     var inputElement = element.find("#" + scope.name)[0];
                     inputElement.focus()
+                };
+
+                scope.handleMouseDown = function () {
+                    console.log("button mouse down");
                 };
 
                 var isDatePickerVisible = function() {
