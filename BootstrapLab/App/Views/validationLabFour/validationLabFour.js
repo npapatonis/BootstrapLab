@@ -26,17 +26,6 @@
             return fromDateTime < toDateTime;
         };
 
-        // From date control
-        //$scope.fromDateHasFocus = false;
-        $scope.showFromDatePicker = false;
-        $scope.handleFromDatePickerButton = function () {
-            if (!$scope.showFromDatePicker) $scope.showFromDatePicker = true;
-            //$scope.fromDateHasFocus = true;
-        }
-        $scope.handleFromDateBlur = function () {
-            $scope.showFromDatePicker = false;
-        }
-
         // From time control
         $scope.fromTimeHasFocus = false;
         $scope.showFromTimePicker = false;
@@ -48,17 +37,7 @@
             $scope.showFromTimePicker = false;
         }
 
-        // To date control
-        $scope.toDateHasFocus = false;
-        $scope.showToDatePicker = false;
-        $scope.handleToDatePickerButton = function () {
-            if (!$scope.showToDatePicker) $scope.showToDatePicker = true;
-            $scope.toDateHasFocus = true;
-        }
-        $scope.handleToDateBlur = function () {
-            $scope.showToDatePicker = false;
-        }
-
+        // To time control
         $scope.toTimeHasFocus = false;
         $scope.showToTimePicker = false;
         $scope.handleToTimePickerButton = function () {

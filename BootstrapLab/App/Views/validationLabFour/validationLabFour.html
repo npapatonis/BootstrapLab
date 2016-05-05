@@ -14,9 +14,8 @@
             </div>
             <div class="col-sm-6"
                  ng-show="(form.$submitted || form.uName.$touched) && !form.uName.$valid">
-                <div style="color: red">
-                    <span style="font-size: larger; padding-right: 5px;"><b>!</b></span>
-                    <span ng-show='form.uName.$error.required'>Please enter your name</span>
+                <div class="pullDown">
+                    <span class="arrow_box" ng-show='form.uName.$error.required'><span class="fa fa-exclamation-circle" />&nbsp;Please enter your name</span>
                 </div>
             </div>
         </div>
@@ -33,10 +32,9 @@
             </div>
             <div class="col-sm-6"
                  ng-show="(form.$submitted || form.uEmail.$touched) && !form.uEmail.$valid">
-                <div style="color: red">
-                    <span style="font-size: larger; padding-right: 5px;"><b>!</b></span>
-                    <span ng-show='form.uEmail.$error.required'>Please enter your email address</span>
-                    <span ng-show='form.uEmail.$error.email'>Please enter a valid email address</span>
+                <div class="pullDown">
+                    <span class="arrow_box" ng-show='form.uEmail.$error.required'><span class="fa fa-exclamation-circle" />&nbsp;Please enter your email address</span>
+                    <span class="arrow_box" ng-show='form.uEmail.$error.email'><span class="fa fa-exclamation-circle" />&nbsp;Please enter a valid email address</span>
                 </div>
             </div>
         </div>
@@ -44,39 +42,15 @@
         <div class="form-group row">
             <label for="testTime" class="form-control-label col-sm-2">From Date/Time</label>
             <div class="col-sm-3">
-                <div class="input-group" style="margin-bottom: 5px;">
-                    <!--
-                        updateOn: 'blur' required unmerged fix to bsDatapicker found here
-                        https://github.com/mgcrea/angular-strap/issues/1668
-                    -->
-                    <input type="text"
-                           id="fromDate"
-                           name="fromDate"
-                           class="form-control"
-                           ng-model="daterange.fromDate"
-                           ng-model-options="{ updateOn: 'blur', allowInvalid: true }"
-                           ng-blur="showFromDatePicker = false"
-                           bs-datepicker
-                           bs-show="showFromDatePicker"
-                           data-date-format="M-d-yyyy"
-                           data-max-date="{{daterange.toDate}}"
-                           data-trigger="manual"
-                           data-autoclose="1"
-                           ui-validate=" 'isValidDateRange()' "
-                           ui-validate-watch="['daterange.fromTime', 'daterange.toDate', 'daterange.toTime']"
-                           required>
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"
-                              ng-click="showFromDatePicker = !showFromDatePicker">
-                        </span>
-                    </span>
-                    <!--<span class="input-group-btn">
-                        <button type="button"
-                                class="btn btn-default"
-                                ng-click="handleFromDatePickerButton()">
-                            <i class="glyphicon glyphicon-calendar"></i>
-                        </button>
-                    </span>-->
+                <div style="margin-bottom: 5px;">
+                    <tks-date-input tks-id="fromDate"
+                                    tks-name="fromDate"
+                                    model="daterange.fromDate"
+                                    format="M-d-yyyy"
+                                    maxDate="{{daterange.toDate}}">
+                                    <!--ui-validate=" 'isValidDateRange()' "
+                                    ui-validate-watch="['daterange.fromTime', 'daterange.toDate', 'daterange.toTime']">-->
+                    </tks-date-input>
                 </div>
                 <div class="input-group">
                     <input type="text"
@@ -105,23 +79,20 @@
             </div>
             <div class="col-sm-6">
                 <div ng-show="(form.$submitted || form.fromDate.$touched || form.fromTime.$touched || form.toDate.$touched || form.toTime.$touched) && form.fromDate.$error.validator">
-                    <div style="color: red">
-                        <span style="font-size: larger; padding-right: 5px;"><b>!</b></span>
-                        <span>Please enter a To Date/Time that is after the From Date/Time</span>
+                    <div class="pullDown">
+                        <span class="arrow_box"><span class="fa fa-exclamation-circle" />&nbsp;Please enter a To Date/Time that is after the From Date/Time</span>
                     </div>
                 </div>
                 <div ng-show="(form.$submitted || form.fromDate.$touched) && form.fromDate.$invalid && !form.fromDate.$error.validator">
-                    <div style="color: red">
-                        <span style="font-size: larger; padding-right: 5px;"><b>!</b></span>
-                        <span ng-show='form.fromDate.$error.required'>Please enter a from date</span>
-                        <span ng-show='form.fromDate.$error.date'>Please enter a from date in m-d-yyyy form</span>
+                    <div class="pullDown">
+                        <span class="arrow_box" ng-show='form.fromDate.$error.required'><span class="fa fa-exclamation-circle" />&nbsp;Please enter a from date</span>
+                        <span class="arrow_box" ng-show='form.fromDate.$error.date'><span class="fa fa-exclamation-circle" />&nbsp;Please enter a from date in m-d-yyyy form</span>
                     </div>
                 </div>
                 <div ng-show="(form.$submitted || form.fromTime.$touched) && form.fromTime.$invalid">
-                    <div style="color: red">
-                        <span style="font-size: larger; padding-right: 5px;"><b>!</b></span>
-                        <span ng-show='form.fromTime.$error.required'>Please enter a from time</span>
-                        <span ng-show='form.fromTime.$error.date'>Please enter a 24 hour from time in hh:mm form</span>
+                    <div class="pullDown">
+                        <span class="arrow_box" ng-show='form.fromTime.$error.required'><span class="fa fa-exclamation-circle" />&nbsp;Please enter a from time</span>
+                        <span class="arrow_box" ng-show='form.fromTime.$error.date'><span class="fa fa-exclamation-circle" />&nbsp;Please enter a 24 hour from time in hh:mm form</span>
                     </div>
                 </div>
             </div>
@@ -130,33 +101,13 @@
         <div class="form-group row">
             <label for="testTime" class="form-control-label col-sm-2">To Date/Time</label>
             <div class="col-sm-3">
-                <div class="input-group" style="margin-bottom: 5px;">
-                    <!--
-                    updateOn: 'blur' required unmerged fix to bsDatapicker found here
-                    https://github.com/mgcrea/angular-strap/issues/1668
-                    -->
-                    <input type="text"
-                           id="toDate"
-                           name="toDate"
-                           class="form-control"
-                           ng-model="daterange.toDate"
-                           ng-model-options="{ updateOn: 'blur', allowInvalid: true }"
-                           ng-blur="handleToDateBlur()"
-                           bs-datepicker
-                           bs-show="showToDatePicker"
-                           data-date-format="M-d-yyyy"
-                           data-min-date="{{daterange.fromDate}}"
-                           data-trigger="manual"
-                           data-autoclose="1"
-                           tks-focus="toDateHasFocus"
-                           required>
-                    <span class="input-group-btn">
-                        <button type="button"
-                                class="btn btn-default"
-                                ng-click="handleToDatePickerButton()">
-                            <i class="glyphicon glyphicon-calendar"></i>
-                        </button>
-                    </span>
+                <div style="margin-bottom: 5px;">
+                    <tks-date-input tks-id="toDate"
+                                    tks-name="toDate"
+                                    model="daterange.toDate"
+                                    format="M-d-yyyy"
+                                    minDate="{{daterange.fromDate}}">
+                    </tks-date-input>
                 </div>
                 <div class="input-group">
                     <input type="text"
@@ -185,17 +136,15 @@
             </div>
             <div class="col-sm-6">
                 <div ng-show="(form.$submitted || form.toDate.$touched) && form.toDate.$invalid">
-                    <div style="color: red">
-                        <span style="font-size: larger; padding-right: 5px;"><b>!</b></span>
-                        <span ng-show='form.toDate.$error.required'>Please enter a to date</span>
-                        <span ng-show='form.toDate.$error.date'>Please enter a to date in m-d-yyyy form</span>
+                    <div class="pullDown">
+                        <span class="arrow_box" ng-show='form.toDate.$error.required'><span class="fa fa-exclamation-circle" />&nbsp;Please enter a to date</span>
+                        <span class="arrow_box" ng-show='form.toDate.$error.date'><span class="fa fa-exclamation-circle" />&nbsp;Please enter a to date in m-d-yyyy form</span>
                     </div>
                 </div>
                 <div ng-show="(form.$submitted || form.toTime.$touched) && form.toTime.$invalid">
-                    <div style="color: red">
-                        <span style="font-size: larger; padding-right: 5px;"><b>!</b></span>
-                        <span ng-show='form.toTime.$error.required'>Please enter a to time</span>
-                        <span ng-show='form.toTime.$error.date'>Please enter a 24 hour to time in hh:mm form</span>
+                    <div class="pullDown">
+                        <span class="arrow_box" ng-show='form.toTime.$error.required'><span class="fa fa-exclamation-circle" />&nbsp;Please enter a to time</span>
+                        <span class="arrow_box" ng-show='form.toTime.$error.date'><span class="fa fa-exclamation-circle" />&nbsp;Please enter a 24 hour to time in hh:mm form</span>
                     </div>
                 </div>
             </div>
@@ -227,9 +176,8 @@
             </div>
             <div class="col-sm-6"
                  ng-show="(form.$submitted || form.gender.$touched) && !form.gender.$valid">
-                <div style="color: red">
-                    <span style="font-size: larger; padding-right: 5px;"><b>!</b></span>
-                    <span ng-show='form.gender.$error.required'>Please specify gender</span>
+                <div class="pullDown">
+                    <span class="arrow_box" ng-show='form.gender.$error.required'><span class="fa fa-exclamation-circle" />&nbsp;Please specify gender</span>
                 </div>
             </div>
         </div>
@@ -249,11 +197,10 @@
             </div>
             <div class="col-sm-6"
                  ng-show="form.$submitted && !form.userAgree.$valid">
-                <div style="color: red">
-                    <span style="font-size: larger; padding-right: 5px;"><b>!</b></span>
-                    <span ng-show='form.userAgree.$error.required'>Please agree and sign</span>
+                <div class="pullDown">
+                    <span class="arrow_box" ng-show='form.userAgree.$error.required'><span class="fa fa-exclamation-circle" />&nbsp;Please agree and sign</span>
                 </div>
-            </div>
+          </div>
         </div>
         <!-- Signature -->
         <div ng-show="user.agree">
@@ -269,9 +216,8 @@
                 </div>
                 <div class="col-sm-6"
                      ng-show="(form.$submitted || form.agreeSign.$touched) && !form.agreeSign.$valid">
-                    <div style="color: red">
-                        <span style="font-size: larger; padding-right: 5px;"><b>!</b></span>
-                        <span ng-show='form.agreeSign.$error.required'>Please sign</span>
+                    <div class="pullDown">
+                        <span class="arrow_box" ng-show='form.agreeSign.$error.required'><span class="fa fa-exclamation-circle" />&nbsp;Please sign</span>
                     </div>
                 </div>
             </div>
@@ -285,5 +231,5 @@
     </form>
     <br />
     <pre>daterange = {{daterange | json}}</pre>
-    <pre>form.fromDate.$error = {{form.fromDate.$error}}</pre>
+    <pre>form.fromDate = {{form.fromDate | json}}</pre>
 </div>
