@@ -43,14 +43,19 @@
             <label for="testTime" class="form-control-label col-sm-2">From Date/Time</label>
             <div class="col-sm-3">
                 <div style="margin-bottom: 5px;">
-                    <input type="text"
+                    <input tks-date-input
+                           type="text"
+                           ng-model="daterange.fromDate"
+                           id="fromDate"
+                           name="fromDate">
+                    <!--<input type="text"
                            id="fromDate"
                            name="fromDate"
                            ng-model="daterange.fromDate"
                            tks-date-input
                            format="M-d-yyyy"
                            maxDate="{{daterange.toDate}}"
-                           required>
+                           required>-->
                     <!--<tks-date-input tks-id="fromDate"
                                     tks-name="fromDate"
                                     model="daterange.fromDate"
