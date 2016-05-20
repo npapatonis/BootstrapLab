@@ -68,6 +68,8 @@
   <ItemGroup>
     <Content Include="App\Directives\blink.js" />
     <Content Include="App\Directives\focus.js" />
+    <Content Include="App\Directives\tksDateInput.js" />
+    <Content Include="App\Directives\tksDateInput2.js" />
     <Content Include="App\Services\dateService.js" />
     <Content Include="App\Views\bootstrap3Datepicker\bootstrap3Datepicker.html" />
     <Content Include="App\Views\bootstrap3Datepicker\bootstrap3Datepicker.js" />

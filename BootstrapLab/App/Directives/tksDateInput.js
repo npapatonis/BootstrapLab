@@ -2,9 +2,9 @@
     'use strict';
 
     angular.module('bootstrapLab')
-        .directive('tksDateInput', ['$timeout', tksFocus]);
+        .directive('tksDateInput1', [tksDateInput]);
 
-    function tksFocus($timeout) {
+    function tksDateInput() {
         return {
             restrict: 'E',
             priority: 1,
