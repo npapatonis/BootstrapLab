@@ -49,6 +49,10 @@
                 url: '/uiBootstrapDateTimeForm',
                 templateUrl: 'App/Views/uiBootstrapDateTimeForm/uiBootstrapDateTimeForm.html'
             })
+            .state('directiveTest', {
+                url: '/directiveTest',
+                templateUrl: 'App/Views/directiveTest/directiveTest.html'
+            })
             .state('uibTooltip', {
                 url: '/uibTooltip',
                 templateUrl: 'App/Views/uibTooltip/uibTooltip.html'

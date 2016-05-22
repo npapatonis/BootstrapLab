@@ -16,8 +16,8 @@
             //terminal: true,
             require: '?ngModel',
             //scope: true,
-            //bindToController: true,
-            bindToController: {
+            bindToController: true,
+            scope: {
                 format: "@",
                 minDate: "@",
                 maxDate: "@",
@@ -57,7 +57,7 @@
                 wrapper.prepend(element);
 
                 return function (scope, elem) {
-                    $compile(elem)(scope);
+                    $compile(elem)(scope.vm);
                 }
 
                 //scope.$on("$destroy", function () {
@@ -82,6 +82,10 @@
                 var inputFocused = false;
                 var focusedClick = false;
                 vm.showDatePicker = false;
+
+                vm.$onInit = function() {
+                    var x = 1;
+                }
 
                 vm.handleInputFocus = function () {
                     console.log("input focus");

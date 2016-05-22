@@ -1,0 +1,22 @@
+﻿<style>
+    .wrapper {
+        border: 2px solid green;
+        padding: 5px;
+    }
+</style>
+<div class="form-group" ng-controller="directiveTestController">
+    <form name="form" novalidate>
+        <h2>Directive Test</h2>
+
+        <input type="text" ng-model="regex" id="regex" />
+        <br />
+        <input id="testValue"
+               name="testValue"
+               type="text"
+               ng-model="formData.testValue"
+               tks-input>
+    </form>
+    <br />
+    <pre>daterange = {{formData | json}}</pre>
+    <pre>form.fromDate = {{form.testValue | json}}</pre>
+</div>

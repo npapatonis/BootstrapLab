@@ -70,11 +70,14 @@
     <Content Include="App\Directives\focus.js" />
     <Content Include="App\Directives\tksDateInput.js" />
     <Content Include="App\Directives\tksDateInput2.js" />
+    <Content Include="App\Directives\tksInput.js" />
     <Content Include="App\Services\dateService.js" />
     <Content Include="App\Views\bootstrap3Datepicker\bootstrap3Datepicker.html" />
     <Content Include="App\Views\bootstrap3Datepicker\bootstrap3Datepicker.js" />
     <Content Include="App\Views\dalelottsDateTimePicker\dalelottsDateTimePicker.html" />
     <Content Include="App\Views\dalelottsDateTimePicker\dalelottsDateTimePicker.js" />
+    <Content Include="App\Views\directiveTest\directiveTest.html" />
+    <Content Include="App\Views\directiveTest\directiveTest.js" />
     <Content Include="App\Views\uibTooltip\uibTooltip.html" />
     <Content Include="App\Views\uibTooltip\uibTooltip.js" />
     <Content Include="App\Views\validationLabFive\validationLabFive.html" />
