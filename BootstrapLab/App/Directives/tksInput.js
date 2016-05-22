@@ -8,6 +8,7 @@
         return {
             restrict: 'A',
             priority: 1,
+            terminal: true,
             require: 'ngModel',
             compile: function (element) {
 
@@ -18,54 +19,34 @@
                     }
                 }
 
-                setAttributeIfNotExists('ng-pattern', 'regex');
+                var wrapper = angular.element(
+                    '<div class="wrapper">' +
+                    'This input is wrappered' +
+                    '</div>');
+
+                element.addClass('form-control');
+                element.removeAttr('tks-input');
+
+                //setAttributeIfNotExists('ng-pattern', 'regex');
+                setAttributeIfNotExists('bs-datepicker', '');
+                setAttributeIfNotExists('data-date-format', '{{dateFormat}}');
+                setAttributeIfNotExists('data-min-date', '{{minDate}}');
+                setAttributeIfNotExists('data-max-date', '{{maxDate}}');
+                setAttributeIfNotExists('data-autoclose', '1');
+
+                element.after(wrapper);
+                wrapper.prepend(element);
 
                 return function (scope, element) {
-                    var wrapper = angular.element(
-                        '<div class="wrapper">' +
-                        'This input is wrappered' +
-                        '</div>');
-
-                    element.addClass('form-control');
-                    element.removeAttr('tks-input');
-
-                    element.after(wrapper);
-                    wrapper.prepend(element);
-
-                    $compile(element)(scope);
-
                     scope.$on("$destroy", function () {
                         wrapper.after(element);
                         wrapper.remove();
                     });
+
+                    $compile(element)(scope);
                 }
 
             },
-            //link: function (scope, element, attrs, ctrl, transclude) {
-            //    var wrapper = angular.element(
-            //        '<div class="wrapper">' +
-            //        'This input is wrappered' +
-            //        '</div>');
-
-            //    function setAttributeIfNotExists(name, value) {
-            //        var oldValue = element.attr(name);
-            //        if (!angular.isDefined(oldValue) || oldValue === false) {
-            //            element.attr(name, value);
-            //        }
-            //    }
-
-            //    setAttributeIfNotExists('ng-pattern', 'regex');
-            //    element.addClass('form-control');
-            //    element.removeAttr('tks-input');
-
-            //    element.after(wrapper);
-            //    wrapper.prepend(element);
-
-            //    scope.$on("$destroy", function () {
-            //        wrapper.after(element);
-            //        wrapper.remove();
-            //    });
-            //}
         }
     };
 })();
