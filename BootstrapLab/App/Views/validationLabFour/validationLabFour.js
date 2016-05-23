@@ -15,7 +15,7 @@
             toTime: dateService.getTimePart(now, 'm')
         };
 
-        $scope.isValidDateRange = function (fromDate, fromTime, toDate, toTime) {
+        $scope.isValidDateRange = function () {
             if (!$scope.daterange.fromDate || !$scope.daterange.fromTime || !$scope.daterange.toDate || !$scope.daterange.toTime) {
                 return true;
             }

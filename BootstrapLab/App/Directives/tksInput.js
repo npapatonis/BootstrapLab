@@ -4,6 +4,46 @@
     angular.module('bootstrapLab')
         .directive('tksInput', ['$compile', tksInput]);
 
+    function tksInput_v_04($compile) {
+        return {
+            restrict: 'A',
+            priority: 1,
+            terminal: true,
+            require: 'ngModel',
+            compile: function (element) {
+
+                function setAttribute(name, value) {
+                    var oldValue = element.attr(name);
+                    if (!angular.isDefined(oldValue) || oldValue === false) {
+                        element.attr(name, value);
+                    }
+                }
+
+                var wrapper = angular.element(
+                    '<div class="wrapper">' +
+                    'This input is wrappered' +
+                    '</div>');
+
+                //setAttribute('ng-pattern', 'regex');
+
+                element.addClass('form-control');
+                element.removeAttr('tks-input');
+
+                element.after(wrapper);
+                wrapper.prepend(element);
+
+                return function (scope, element) {
+                    scope.$on("$destroy", function () {
+                        wrapper.after(element);
+                        wrapper.remove();
+                    });
+
+                    $compile(element)(scope);
+                }
+            }
+        }
+    };
+
     function tksInput_v_03($compile) {
         return {
             restrict: 'A',

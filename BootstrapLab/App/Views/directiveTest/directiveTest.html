@@ -18,9 +18,11 @@
                type="text"
                ng-show="showInput"
                ng-model="dateRange.fromDate"
-               tks-input
-               tks-min-date="{{minDate}}"
-               tks-date-format="{{dateFormat}}">
+               tks-date-input
+               tks-max-date="{{dateRange.toDate}}"
+               tks-date-format="{{dateFormat}}"
+               ui-validate=" 'isValidDateRange()' "
+               ui-validate-watch="['dateRange.toDate']">
 
         <hr />
 
@@ -29,12 +31,13 @@
                type="text"
                ng-show="showInput"
                ng-model="dateRange.toDate"
-               tks-input
-               tks-min-date="{{minDate}}"
+               tks-date-input
+               tks-min-date="{{dateRange.fromDate}}"
                tks-date-format="{{dateFormat}}">
+
     </form>
     <br />
     <pre>dateRange = {{dateRange | json}}</pre>
-    <pre>form.fromDate = {{form.fromDate | json}}</pre>
-    <pre>form.toDate = {{form.toDate | json}}</pre>
+    <pre>form.fromDate.$error = {{form.fromDate.$error | json}}</pre>
+    <pre>form.toDate.$error = {{form.toDate.$error | json}}</pre>
 </div>

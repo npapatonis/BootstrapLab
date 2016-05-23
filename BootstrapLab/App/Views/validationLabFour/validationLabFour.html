@@ -43,27 +43,16 @@
             <label for="testTime" class="form-control-label col-sm-2">From Date/Time</label>
             <div class="col-sm-3">
                 <div style="margin-bottom: 5px;">
-                    <input tks-date-input
-                           type="text"
-                           ng-model="daterange.fromDate"
-                           id="fromDate"
-                           name="fromDate">
-                    <!--<input type="text"
+                    <input type="text"
                            id="fromDate"
                            name="fromDate"
                            ng-model="daterange.fromDate"
                            tks-date-input
-                           format="M-d-yyyy"
-                           maxDate="{{daterange.toDate}}"
-                           required>-->
-                    <!--<tks-date-input tks-id="fromDate"
-                                    tks-name="fromDate"
-                                    model="daterange.fromDate"
-                                    format="M-d-yyyy"
-                                    maxDate="{{daterange.toDate}}">-->
-                        <!--ui-validate=" 'isValidDateRange()' "
-                        ui-validate-watch="['daterange.fromTime', 'daterange.toDate', 'daterange.toTime']">-->
-                    <!--</tks-date-input>-->
+                           tks-date-format="M-d-yyyy"
+                           tks-max-date="{{daterange.toDate}}"
+                           ui-validate=" 'isValidDateRange()' "
+                           ui-validate-watch="['daterange.fromTime', 'daterange.toDate', 'daterange.toTime']"
+                           required>
                 </div>
                 <div class="input-group">
                     <input type="text"
@@ -115,12 +104,14 @@
             <label for="testTime" class="form-control-label col-sm-2">To Date/Time</label>
             <div class="col-sm-3">
                 <div style="margin-bottom: 5px;">
-                    <tks-date-input tks-id="toDate"
-                                    tks-name="toDate"
-                                    model="daterange.toDate"
-                                    format="M-d-yyyy"
-                                    minDate="{{daterange.fromDate}}">
-                    </tks-date-input>
+                    <input type="text"
+                           id="toDate"
+                           name="toDate"
+                           ng-model="daterange.toDate"
+                           tks-date-input
+                           tks-date-format="M-d-yyyy"
+                           tks-min-date="{{daterange.fromDate}}"
+                           required>
                 </div>
                 <div class="input-group">
                     <input type="text"

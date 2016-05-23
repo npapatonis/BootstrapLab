@@ -66,10 +66,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App\Directives\blink.js" />
-    <Content Include="App\Directives\focus.js" />
     <Content Include="App\Directives\tksDateInput.js" />
-    <Content Include="App\Directives\tksDateInput2.js" />
     <Content Include="App\Directives\tksInput.js" />
     <Content Include="App\Services\dateService.js" />
     <Content Include="App\Views\bootstrap3Datepicker\bootstrap3Datepicker.html" />
@@ -96,7 +93,6 @@
     <Content Include="Content\styles.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="packages.config" />
-    <Content Include="App\Directives\angular-eonasdan-datetimepicker.js" />
     <Content Include="Scripts\angular.min.js.map" />
     <Content Include="Scripts\angular-animate.min.js.map" />
     <Content Include="Scripts\bootstrap-datetimepicker.js" />
