@@ -2,15 +2,16 @@
     'use strict';
 
     angular.module('bootstrapLab')
-        .controller('directiveTestController', ['$scope', directiveTestController]);
+        .controller('directiveTestController', ['$scope', 'dateService', directiveTestController]);
 
-    function directiveTestController($scope) {
-        $scope.regex = '\\d+';
-        $scope.dateFormat = 'M-d-yyyy';
+    function directiveTestController($scope, dateService) {
         $scope.minDate = new Date();
-        $scope.formData = {
-            testValue: 'Some Value',
-            showInput: true
+        $scope.dateFormat = 'M-d-yyyy';
+        $scope.showInput = true;
+
+        $scope.dateRange = {
+            fromDate: dateService.addDays(dateService.getDatePart(now), -1),
+            toDate: dateService.getDatePart(now),
         };
     }
 })();

@@ -8,28 +8,33 @@
     <form name="form" novalidate>
         <h2>Directive Test</h2>
 
-        <input type="text" ng-model="regex" id="regex" />
-        <br />
-        <input type="text" ng-model="dateFormat" id="dateFormat" />
-        <br />
-        <input type="text" ng-model="minDate" id="minDate" />
-        <br />
-
         <label>
             Show
-            <input type="checkbox" ng-model="formData.showInput" />
+            <input type="checkbox" ng-model="showInput" />
         </label>
 
-        <input id="testValue"
-               name="testValue"
+        <input id="fromDate"
+               name="fromDate"
                type="text"
-               ng-if="formData.showInput"
-               ng-model="formData.testValue"
+               ng-show="showInput"
+               ng-model="dateRange.fromDate"
+               tks-input
+               tks-min-date="{{minDate}}"
+               tks-date-format="{{dateFormat}}">
+
+        <hr />
+
+        <input id="toDate"
+               name="toDate"
+               type="text"
+               ng-show="showInput"
+               ng-model="dateRange.toDate"
                tks-input
                tks-min-date="{{minDate}}"
                tks-date-format="{{dateFormat}}">
     </form>
     <br />
-    <pre>daterange = {{formData | json}}</pre>
-    <pre>form.fromDate = {{form.testValue | json}}</pre>
+    <pre>dateRange = {{dateRange | json}}</pre>
+    <pre>form.fromDate = {{form.fromDate | json}}</pre>
+    <pre>form.toDate = {{form.toDate | json}}</pre>
 </div>

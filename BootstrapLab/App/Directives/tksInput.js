@@ -42,7 +42,7 @@
             },
             //compile: function (element) {
 
-            //    function setAttributeIfNotExists(name, value) {
+            //    function setAttribute(name, value) {
             //        var oldValue = element.attr(name);
             //        if (!angular.isDefined(oldValue) || oldValue === false) {
             //            element.attr(name, value);
@@ -57,12 +57,12 @@
             //    element.addClass('form-control');
             //    element.removeAttr('tks-input');
 
-            //    //setAttributeIfNotExists('ng-pattern', 'regex');
-            //    setAttributeIfNotExists('bs-datepicker', '');
-            //    setAttributeIfNotExists('data-date-format', '{{dateFormat}}');
-            //    setAttributeIfNotExists('data-min-date', '{{minDate}}');
-            //    setAttributeIfNotExists('data-max-date', '{{maxDate}}');
-            //    setAttributeIfNotExists('data-autoclose', '1');
+            //    //setAttribute('ng-pattern', 'regex');
+            //    setAttribute('bs-datepicker', '');
+            //    setAttribute('data-date-format', '{{dateFormat}}');
+            //    setAttribute('data-min-date', '{{minDate}}');
+            //    setAttribute('data-max-date', '{{maxDate}}');
+            //    setAttribute('data-autoclose', '1');
 
             //    element.after(wrapper);
             //    wrapper.prepend(element);
@@ -100,17 +100,12 @@
             scope: true,
             compile: function (element, attrs) {
 
-                function setAttributeIfNotExists(name, value) {
-                    var oldValue = element.attr(name);
-                    if (!angular.isDefined(oldValue) || oldValue === false) {
-                        element.attr(name, value);
+                function setAttribute(name, value, elem) {
+                    elem = elem ? elem : element;
+                    if (!elem.attr(name)) {
+                        elem.attr(name, value);
                     }
                 }
-
-                //var wrapper = angular.element(
-                //    '<div class="wrapper">' +
-                //    'This input is wrappered' +
-                //    '</div>');
 
                 var wrapper = angular.element('<span class="input-group"> ' +
                     '<span class="input-group-addon" ' +
@@ -123,28 +118,36 @@
 
                 element.addClass('form-control');
 
-                //setAttributeIfNotExists('ng-pattern', 'regex');
+                // Transfer certain directives to outer span
+                angular.forEach([{ normal: 'ngIf', attr: 'ng-if' }, { normal: 'ngShow', attr: 'ng-show' }, { normal: 'ngHide', attr: 'ng-hide' }], function (attr) {
+                    if (angular.isDefined(attrs[attr.normal])) {
+                        setAttribute(attr.attr, attrs[attr.normal], wrapper);
+                        element.removeAttr(attr.attr);
+                    }
+                });
 
-                setAttributeIfNotExists('ng-model-options', '{ updateOn: \'blur\', allowInvalid: true }');
-                setAttributeIfNotExists('ng-focus', 'handleInputFocus()');
-                setAttributeIfNotExists('ng-blur', 'handleInputBlur()');
+                // Set focus and model update attributes
+                setAttribute('ng-model-options', '{ updateOn: \'blur\', allowInvalid: true }');
+                setAttribute('ng-focus', 'handleInputFocus()');
+                setAttribute('ng-blur', 'handleInputBlur()');
 
-                setAttributeIfNotExists('bs-datepicker', '');
-                setAttributeIfNotExists('bs-show', 'showDatePicker');
-                setAttributeIfNotExists('data-date-format', attrs.tksDateFormat ? attrs.tksDateFormat : 'yy-MM-dd');
+                // Set angular strap datepicker attributes
+                setAttribute('bs-datepicker', '');
+                setAttribute('bs-show', 'showDatePicker');
+                setAttribute('data-date-format', attrs.tksDateFormat ? attrs.tksDateFormat : 'yy-MM-dd');
+                setAttribute('data-trigger', 'manual');
+                setAttribute('data-autoclose', '1');
                 if (attrs.tksMinDate) {
-                    setAttributeIfNotExists('data-min-date', attrs.tksMinDate);
+                    setAttribute('data-min-date', attrs.tksMinDate);
                 }
                 if (attrs.tksMaxDate) {
-                    setAttributeIfNotExists('data-max-date', attrs.tksMaxDate);
+                    setAttribute('data-max-date', attrs.tksMaxDate);
                 }
-                setAttributeIfNotExists('data-trigger', 'manual');
-                setAttributeIfNotExists('data-autoclose', '1');
 
-                element.removeAttr('tks-input');
-                element.removeAttr('tks-date-format');
-                element.removeAttr('tks-min-date');
-                element.removeAttr('tks-max-date');
+                // Remove tks attributes
+                angular.forEach(['tks-input', 'tks-date-format', 'tks-min-date', 'tks-max-date'], function (attr) {
+                    element.removeAttr(attr);
+                });
 
                 element.after(wrapper);
                 wrapper.prepend(element);
@@ -176,7 +179,7 @@
                     };
 
                     scope.handleButtonClick = function () {
-                        scope.showDatePicker = !scope.showDatePicker; // !isDatePickerVisible();
+                        scope.showDatePicker = !scope.showDatePicker;
                         var inputElement = element.find("#" + attrs.name)[0];
                         inputElement.focus()
                     };
@@ -186,37 +189,7 @@
                         focusedClick = true;
                     };
                 }
-            },
-            //controller: function (scope) {
-            //    var inputFocused = false;
-            //    var focusedClick = false;
-            //    scope.showDatePicker = false;
-
-            //    scope.handleInputFocus = function () {
-            //        console.log("input focus");
-            //        inputFocused = true;
-            //        focusedClick = false;
-            //    };
-
-            //    scope.handleInputBlur = function (event) {
-            //        console.log("input blur");
-            //        inputFocused = false;
-            //        if (!focusedClick) {
-            //            scope.showDatePicker = false;
-            //        }
-            //    };
-
-            //    scope.handleButtonClick = function () {
-            //        scope.showDatePicker = !scope.showDatePicker; // !isDatePickerVisible();
-            //        var inputElement = element.find("#" + scope.name)[0];
-            //        inputElement.focus()
-            //    };
-
-            //    scope.handleButtonMouseDown = function () {
-            //        console.log("button mouse down");
-            //        focusedClick = true;
-            //    };
-            //}
+            }
         }
     };
 })();
