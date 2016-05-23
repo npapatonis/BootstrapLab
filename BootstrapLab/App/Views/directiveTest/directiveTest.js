@@ -9,7 +9,8 @@
         $scope.dateFormat = 'M-d-yyyy';
         $scope.minDate = new Date();
         $scope.formData = {
-            testValue: 'Some Value'
+            testValue: 'Some Value',
+            showInput: true
         };
     }
 })();

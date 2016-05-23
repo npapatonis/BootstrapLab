@@ -14,9 +14,16 @@
         <br />
         <input type="text" ng-model="minDate" id="minDate" />
         <br />
+
+        <label>
+            Show
+            <input type="checkbox" ng-model="formData.showInput" />
+        </label>
+
         <input id="testValue"
                name="testValue"
                type="text"
+               ng-if="formData.showInput"
                ng-model="formData.testValue"
                tks-input
                tks-min-date="{{minDate}}"
