@@ -2,9 +2,9 @@
     'use strict';
 
     angular.module('bootstrapLab')
-        .directive('tksDateInput', ['$compile', 'tksDirectives', tksDateInput]);
+        .directive('tksTimeInput', ['$compile', 'tksDirectives', tksTimeInput]);
 
-    function tksDateInput($compile, tksDirectives) {
+    function tksTimeInput($compile, tksDirectives) {
         return {
             restrict: 'A',
             priority: 1,
@@ -17,7 +17,7 @@
                     '<span class="btn btn-default input-group-addon" ' +
                     'ng-mousedown="' + 'handleButtonMouseDown()" ' +
                     'ng-click="' + 'handleButtonClick()"> ' +
-                    '<span class="fa fa-calendar"> ' +
+                    '<span class="fa fa-clock-o"> ' +
                     '</span> ' +
                     '</span> ' +
                     '</span>');
@@ -34,21 +34,16 @@
                 tksDirectives.setAttribute('ng-focus', 'handleInputFocus()', element);
                 tksDirectives.setAttribute('ng-blur', 'handleInputBlur()', element);
 
-                // Set angular strap datepicker attributes
-                tksDirectives.setAttribute('bs-datepicker', '', element);
-                tksDirectives.setAttribute('bs-show', 'showDatePicker', element);
-                tksDirectives.setAttribute('data-date-format', attrs.tksDateFormat ? attrs.tksDateFormat : 'yy-MM-dd', element);
+                // Set angular strap timepicker attributes
+                tksDirectives.setAttribute('bs-timepicker', '', element);
+                tksDirectives.setAttribute('bs-show', 'showTimePicker', element);
+                tksDirectives.setAttribute('data-time-format', attrs.tksTimeFormat ? attrs.tksTimeFormat : 'HH:mm', element);
+                tksDirectives.setAttribute('data-minute-step', attrs.tksMinuteStep ? attrs.tksMinuteStep : '1', element);
                 tksDirectives.setAttribute('data-trigger', 'manual', element);
                 tksDirectives.setAttribute('data-autoclose', '1', element);
-                if (attrs.tksMinDate) {
-                    tksDirectives.setAttribute('data-min-date', attrs.tksMinDate, element);
-                }
-                if (attrs.tksMaxDate) {
-                    tksDirectives.setAttribute('data-max-date', attrs.tksMaxDate, element);
-                }
 
                 // Remove tks attributes
-                tksDirectives.removeTksAttributes(element, ['tks-date-input', 'tks-date-format', 'tks-min-date', 'tks-max-date']);
+                tksDirectives.removeTksAttributes(element, ['tks-time-input', 'tks-time-format', 'tks-minute-step']);
 
                 element.addClass('form-control');
 
@@ -65,7 +60,7 @@
 
                     var inputFocused = false;
                     var focusedClick = false;
-                    scope.showDatePicker = false;
+                    scope.showTimePicker = false;
 
                     scope.handleInputFocus = function () {
                         inputFocused = true;
@@ -75,12 +70,12 @@
                     scope.handleInputBlur = function (event) {
                         inputFocused = false;
                         if (!focusedClick) {
-                            scope.showDatePicker = false;
+                            scope.showTimePicker = false;
                         }
                     };
 
                     scope.handleButtonClick = function () {
-                        scope.showDatePicker = !scope.showDatePicker;
+                        scope.showTimePicker = !scope.showTimePicker;
                         var inputElement = element.find("#" + attrs.name)[0];
                         inputElement.focus()
                     };

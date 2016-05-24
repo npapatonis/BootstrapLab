@@ -68,7 +68,9 @@
   <ItemGroup>
     <Content Include="App\Directives\tksDateInput.js" />
     <Content Include="App\Directives\tksInput.js" />
+    <Content Include="App\Directives\tksTimeInput.js" />
     <Content Include="App\Services\dateService.js" />
+    <Content Include="App\Services\tksDirectives.js" />
     <Content Include="App\Views\bootstrap3Datepicker\bootstrap3Datepicker.html" />
     <Content Include="App\Views\bootstrap3Datepicker\bootstrap3Datepicker.js" />
     <Content Include="App\Views\dalelottsDateTimePicker\dalelottsDateTimePicker.html" />

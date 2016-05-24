@@ -52,32 +52,16 @@
                            tks-max-date="{{daterange.toDate}}"
                            ui-validate=" 'isValidDateRange()' "
                            ui-validate-watch="['daterange.fromTime', 'daterange.toDate', 'daterange.toTime']"
-                           required>
-                </div>
-                <div class="input-group">
-                    <input type="text"
-                           id="fromTime"
-                           name="fromTime"
-                           class="form-control"
-                           ng-model="daterange.fromTime"
-                           ng-model-options="{ updateOn: 'blur', allowInvalid: true }"
-                           ng-blur="handleFromTimeBlur()"
-                           bs-timepicker
-                           bs-show="showFromTimePicker"
-                           data-time-format="HH:mm"
-                           data-minute-step="1"
-                           data-trigger="manual"
-                           data-autoclose="1"
-                           tks-focus="fromTimeHasFocus"
                            required />
-                    <span class="input-group-btn">
-                        <button type="button"
-                                class="btn btn-default"
-                                ng-click="handleFromTimePickerButton()">
-                            <i class="glyphicon glyphicon-time"></i>
-                        </button>
-                    </span>
                 </div>
+                <input type="text"
+                       id="fromTime"
+                       name="fromTime"
+                       ng-model="daterange.fromTime"
+                       tks-time-input
+                       tks-time-format="HH:mm"
+                       tks-minute-step="1"
+                       required />
             </div>
             <div class="col-sm-6">
                 <div ng-show="(form.$submitted || form.fromDate.$touched || form.fromTime.$touched || form.toDate.$touched || form.toTime.$touched) && form.fromDate.$error.validator">
@@ -113,30 +97,14 @@
                            tks-min-date="{{daterange.fromDate}}"
                            required>
                 </div>
-                <div class="input-group">
-                    <input type="text"
-                           id="toTime"
-                           name="toTime"
-                           class="form-control"
-                           ng-model="daterange.toTime"
-                           ng-model-options="{ updateOn: 'blur', allowInvalid: true }"
-                           ng-blur="handleToTimeBlur()"
-                           bs-timepicker
-                           bs-show="showToTimePicker"
-                           data-time-format="HH:mm"
-                           data-minute-step="1"
-                           data-trigger="manual"
-                           data-autoclose="1"
-                           tks-focus="toTimeHasFocus"
-                           required />
-                    <span class="input-group-btn">
-                        <button type="button"
-                                class="btn btn-default"
-                                ng-click="handleToTimePickerButton()">
-                            <i class="glyphicon glyphicon-time"></i>
-                        </button>
-                    </span>
-                </div>
+                <input type="text"
+                       id="toTime"
+                       name="toTime"
+                       ng-model="daterange.toTime"
+                       tks-time-input
+                       tks-time-format="HH:mm"
+                       tks-minute-step="1"
+                       required />
             </div>
             <div class="col-sm-6">
                 <div ng-show="(form.$submitted || form.toDate.$touched) && form.toDate.$invalid">
@@ -235,5 +203,8 @@
     </form>
     <br />
     <pre>daterange = {{daterange | json}}</pre>
-    <pre>form.fromDate = {{form.fromDate | json}}</pre>
+    <pre>form.fromDate.$error = {{form.fromDate.$error | json}}</pre>
+    <pre>form.fromTime.$error = {{form.fromTime.$error | json}}</pre>
+    <pre>form.toDate.$error = {{form.toDate.$error | json}}</pre>
+    <pre>form.toTime.$error = {{form.toTime.$error | json}}</pre>
 </div>
