@@ -1,7 +1,7 @@
 ﻿(function () {
     "use strict";
 
-    angular.module('bootstrapLab', ['ui.router', 'ngAnimate', 'ui.bootstrap', 'ui.bootstrap.datetimepicker', 'mgcrea.ngStrap', 'ui.validate'])
+    angular.module('bootstrapLab', ['ui.router', 'ngAnimate', 'ui.bootstrap', 'ui.bootstrap.datetimepicker', 'mgcrea.ngStrap.helpers.dateParser', 'mgcrea.ngStrap.helpers.dateFormatter', 'mgcrea.ngStrap.datepicker', 'ui.validate'])
         .config(config);
 
     function config($stateProvider, $urlRouterProvider) {
