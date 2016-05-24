@@ -95,10 +95,6 @@
     <Content Include="Content\styles.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="packages.config" />
-    <Content Include="Scripts\angular-strap\date-formatter.js" />
-    <Content Include="Scripts\angular-strap\date-parser.js" />
-    <Content Include="Scripts\angular-strap\datepicker.js" />
-    <Content Include="Scripts\angular-strap\datepicker.tpl.js" />
     <Content Include="Scripts\angular.min.js.map" />
     <Content Include="Scripts\angular-animate.min.js.map" />
     <Content Include="Scripts\bootstrap-datetimepicker.js" />
