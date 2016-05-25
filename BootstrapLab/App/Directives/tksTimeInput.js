@@ -83,6 +83,12 @@
                     scope.handleButtonMouseDown = function () {
                         focusedClick = true;
                     };
+
+                    scope.$on('tooltip.hide', function (event, args) {
+                        if (args.$id === attrs.id) {
+                            scope.showTimePicker = false;
+                        }
+                    })
                 }
             }
         }

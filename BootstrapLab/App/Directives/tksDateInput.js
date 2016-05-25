@@ -46,7 +46,6 @@
                 if (attrs.tksMaxDate) {
                     tksDirectives.setAttribute('data-max-date', attrs.tksMaxDate, element);
                 }
-                tksDirectives.setAttribute('data-on-hide', 'handleOnHide()', element);
 
                 // Remove tks attributes
                 tksDirectives.removeTksAttributes(element, ['tks-date-input', 'tks-date-format', 'tks-min-date', 'tks-max-date']);
@@ -90,10 +89,11 @@
                         focusedClick = true;
                     };
 
-                    scope.handleOnHide = function () {
-                        console.log('onHide');
-                        scope.showDatePicker = false;
-                    }
+                    scope.$on('tooltip.hide', function (event, args) {
+                        if (args.$id === attrs.id) {
+                            scope.showDatePicker = false;
+                        }
+                    })
                 }
             }
         }

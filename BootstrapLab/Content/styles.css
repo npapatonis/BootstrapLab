@@ -2,8 +2,8 @@
     /*color: red;*/
     animation-name: pullDown;
     -webkit-animation-name: pullDown;
-    animation-duration: 1s;
-    -webkit-animation-duration: 1.1s;
+    animation-duration: .65s;
+    -webkit-animation-duration: .75s;
     animation-timing-function: ease-out;
     -webkit-animation-timing-function: ease-out;
     transform-origin: 50% 0%;
